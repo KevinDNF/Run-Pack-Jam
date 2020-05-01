@@ -18,6 +18,12 @@ _global_script_class_icons={
 config/name="QuarantineJam"
 config/icon="res://icon.png"
 
+[layer_names]
+
+2d_physics/layer_1="Player"
+2d_physics/layer_2="Enemy"
+2d_physics/layer_3="World"
+
 [rendering]
 
 quality/driver/driver_name="GLES2"
