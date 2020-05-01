@@ -6,7 +6,7 @@ export var FRICTION = 500
 
 enum {
 	RUNNING,
-	PLAYING
+	BAND_PLAYING
 }
 
 var state = RUNNING
@@ -26,8 +26,15 @@ func _physics_process(delta: float) -> void:
 	match(state):
 		RUNNING:
 			move_state(delta)
-		PLAYING:
-			playing_state(delta)
+		BAND_PLAYING:
+			band_playing_state(delta)
+
+func band_playing_state(delta: float):
+	animationState.travel("Idle")
+	velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
+	
+	if Input.is_action_just_pressed("band_playing"):
+		toggleBandPlaying()
 
 func move_state(delta: float):
 	var input_vector = Vector2.ZERO
@@ -46,9 +53,14 @@ func move_state(delta: float):
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 	
 	move()
-		
+	
+	if Input.is_action_just_pressed("band_playing"):
+		animationTree.set("parameters/Idle/blend_position", Vector2.DOWN)
+		animationTree.set("parameters/Run/blend_position",  Vector2.DOWN)
+		toggleBandPlaying()
+	
 func move():
 	velocity = move_and_slide(velocity)
 
-func playing_state(delta):
-	pass
+func toggleBandPlaying():
+	state = BAND_PLAYING if state == RUNNING else RUNNING
