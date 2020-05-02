@@ -18,26 +18,16 @@
 [sub_resource type="GDScript" id=1]
 script/source = "extends Node2D
 
-onready var player = $Player
-onready var enemy = $Policeman
-onready var nav = $Navigation2D
-onready var line2d = $Line2D
+export var maxNumberOfEnemies = 10
+var currentNumberOfEnemies = 0 setget set_current_number_of_enemies
 
+func set_current_number_of_enemies(value):
+	currentNumberOfEnemies += value
 
+func _on_EnemyNavigationHandler_new_policeman_created() -> void:
+	currentNumberOfEnemies += 1
 	
-#func _process(delta: float) -> void:
-#	var new_path = nav.get_simple_path(enemy.global_position, player.global_position)
-#	enemy.path = new_path
-#	line2d.points = new_path
-#
-#
-#func _unhandled_input(event: InputEvent) -> void:
-#	if not event is InputEventMouseButton:
-#		return
-#	if event.button_index != BUTTON_LEFT or not event.pressed:
-#		return
-	
-	
+
 "
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
@@ -1556,24 +1546,25 @@ resource_local_to_scene = true
 } ]
 0/z_index = 0
 
+[sub_resource type="StyleBoxEmpty" id=141]
+
+[sub_resource type="StyleBoxEmpty" id=142]
+
+[sub_resource type="StyleBoxEmpty" id=143]
+
 [sub_resource type="StyleBoxEmpty" id=144]
 
 [sub_resource type="StyleBoxEmpty" id=145]
 
 [sub_resource type="StyleBoxEmpty" id=146]
 
-[sub_resource type="StyleBoxEmpty" id=141]
+[sub_resource type="StyleBoxEmpty" id=147]
 
 [sub_resource type="StyleBoxEmpty" id=148]
 
-[sub_resource type="StyleBoxEmpty" id=149]
-
-[sub_resource type="StyleBoxEmpty" id=150]
-
-[sub_resource type="StyleBoxEmpty" id=142]
-
 [node name="World" type="Node2D"]
 script = SubResource( 1 )
+maxNumberOfEnemies = 5
 
 [node name="Navigation2D" type="Navigation2D" parent="."]
 __meta__ = {
@@ -1657,11 +1648,11 @@ __meta__ = {
 
 [node name="EnemyNavigationHandler" parent="." instance=ExtResource( 8 )]
 
+[node name="SpawnPosition" parent="EnemyNavigationHandler" index="1"]
+position = Vector2( -42.1594, 118.602 )
+
 [node name="PoliceSpawnTimer" parent="EnemyNavigationHandler" index="2"]
 wait_time = 5.0
-[editable path="Policeman"]
-
-[editable path="EnemyNavigationHandler"]
 
 [node name="UI" type="CanvasLayer" parent="."]
 layer = 2
@@ -1713,10 +1704,10 @@ margin_top = 287.95
 margin_right = 708.4
 margin_bottom = 383.95
 custom_styles/hover = ExtResource( 11 )
-custom_styles/pressed = SubResource( 144 )
-custom_styles/focus = SubResource( 145 )
-custom_styles/disabled = SubResource( 146 )
-custom_styles/normal = SubResource( 141 )
+custom_styles/pressed = SubResource( 141 )
+custom_styles/focus = SubResource( 142 )
+custom_styles/disabled = SubResource( 143 )
+custom_styles/normal = SubResource( 144 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1727,10 +1718,10 @@ margin_top = 391.185
 margin_right = 700.106
 margin_bottom = 486.185
 custom_styles/hover = ExtResource( 11 )
-custom_styles/pressed = SubResource( 148 )
-custom_styles/focus = SubResource( 149 )
-custom_styles/disabled = SubResource( 150 )
-custom_styles/normal = SubResource( 142 )
+custom_styles/pressed = SubResource( 145 )
+custom_styles/focus = SubResource( 146 )
+custom_styles/disabled = SubResource( 147 )
+custom_styles/normal = SubResource( 148 )
 
 [node name="MenuMusic" type="AudioStreamPlayer" parent="UI/Pause Menu"]
 stream = ExtResource( 12 )
@@ -1740,7 +1731,10 @@ stream = ExtResource( 13 )
 
 [node name="ExitSFX" type="AudioStreamPlayer" parent="UI/Pause Menu"]
 stream = ExtResource( 14 )
+[connection signal="new_policeman_created" from="EnemyNavigationHandler" to="." method="_on_EnemyNavigationHandler_new_policeman_created"]
 [connection signal="button_up" from="UI/Pause Menu/Continue_Btn" to="UI/Pause Menu" method="_on_Continue_Btn_button_up"]
 [connection signal="button_up" from="UI/Pause Menu/Quit_Btn" to="UI/Pause Menu" method="_on_Quit_Btn_button_up"]
 
+[editable path="Policeman"]
 
+[editable path="EnemyNavigationHandler"]

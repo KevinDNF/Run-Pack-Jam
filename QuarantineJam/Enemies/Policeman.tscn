@@ -6,7 +6,7 @@
 [ext_resource path="res://AI/SoftCollision.tscn" type="PackedScene" id=4]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 19.0061
+radius = 10.8974
 
 [sub_resource type="CapsuleShape2D" id=2]
 radius = 16.3703
@@ -23,12 +23,11 @@ vframes = 4
 hframes = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2( 0, 2.92685 )
+position = Vector2( -0.282822, 22.1577 )
+rotation = 1.5708
 shape = SubResource( 1 )
 
 [node name="PlayerDetectionZone" parent="." instance=ExtResource( 3 )]
-visible = false
 
 [node name="Line2D" type="Line2D" parent="."]
 
