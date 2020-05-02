@@ -26,22 +26,30 @@
 script/source = "extends Node2D
 
 export var maxNumberOfEnemies = 10
-var currentNumberOfEnemies = 0 setget set_current_number_of_enemies
+var currentNumberOfEnemies = 0 
 
 export var targetNumberOfFans = 20
-var currentNumberOfFans = 0 setget set_current_number_of_fans
+var currentNumberOfFans = 0 
 
-func set_current_number_of_enemies(value):
-	currentNumberOfEnemies += value
+onready var PlayerHud = $\"UI/PlayerHUD\"
 
-func set_current_number_of_fans(value):
-	currentNumberOfFans += value
+func _ready() -> void:
+	PlayerHud.Max_Enemies = maxNumberOfEnemies
+	PlayerHud.Max_Followers = targetNumberOfFans
 
 func _on_EnemyNavigationHandler_new_policeman_created() -> void:
 	currentNumberOfEnemies += 1
+	PlayerHud.Enemies = currentNumberOfEnemies
 	
 func _on_FanNavigationHandler_new_fan_created() -> void:
 	currentNumberOfFans += 1
+	PlayerHud.Followers = currentNumberOfFans
+	if (currentNumberOfFans >= targetNumberOfFans):
+		game_won()
+
+func game_won():
+	print(\"you have won the game!!!!\")
+	pass
 "
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
@@ -1447,7 +1455,6 @@ animations = [ {
 [node name="World" type="Node2D"]
 script = SubResource( 1 )
 maxNumberOfEnemies = 5
-targetNumberOfFans = 3
 
 [node name="Navigation2D" type="Navigation2D" parent="."]
 __meta__ = {
@@ -1548,27 +1555,28 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -1024.0
+margin_left = -1024.66
 margin_top = -600.0
+margin_right = -0.664307
 script = ExtResource( 20 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ColorRect2" type="ColorRect" parent="UI/PlayerHUD"]
-margin_left = 833.0
+[node name="TotalFollowers_Bar" type="ColorRect" parent="UI/PlayerHUD"]
+margin_left = 836.0
 margin_top = 541.0
-margin_right = 987.0
+margin_right = 984.0
 margin_bottom = 572.0
 color = Color( 0.192157, 0.192157, 0.192157, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ColorRect" type="ColorRect" parent="UI/PlayerHUD"]
-margin_left = 833.0
+[node name="Followers_Bar" type="ColorRect" parent="UI/PlayerHUD"]
+margin_left = 836.0
 margin_top = 541.0
-margin_right = 929.0
+margin_right = 846.0
 margin_bottom = 572.0
 color = Color( 0.309804, 0.584314, 0.764706, 1 )
 __meta__ = {
@@ -1576,18 +1584,18 @@ __meta__ = {
 }
 
 [node name="Police Meter" type="Sprite" parent="UI/PlayerHUD"]
-position = Vector2( 893.026, 502.594 )
+position = Vector2( 893.026, 502.236 )
 scale = Vector2( 2.77579, 2.77579 )
 texture = ExtResource( 19 )
 vframes = 6
-frame = 4
+frame = 5
 
 [node name="Followers Meter" type="AnimatedSprite" parent="UI/PlayerHUD"]
 position = Vector2( 892.137, 556.737 )
 scale = Vector2( 2.78503, 2.78503 )
 frames = SubResource( 119 )
 animation = "Animate"
-frame = 3
+frame = 1
 playing = true
 
 [node name="Pause Menu" type="Control" parent="UI"]
