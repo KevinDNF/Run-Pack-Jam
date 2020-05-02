@@ -3,6 +3,7 @@
 [ext_resource path="res://Levels/city_tile_set.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Enemies/Policeman.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Music and Sounds/BG/Background tuning and Drum stuff.wav" type="AudioStream" id=4]
 [ext_resource path="res://UI/UI_pause.png" type="Texture" id=5]
 [ext_resource path="res://Levels/Camera Rotation.gd" type="Script" id=6]
 [ext_resource path="res://Levels/buildings.png" type="Texture" id=7]
@@ -10,9 +11,7 @@
 [ext_resource path="res://Levels/roads.png" type="Texture" id=9]
 [ext_resource path="res://UI/Pause Menu.gd" type="Script" id=10]
 [ext_resource path="res://UI/MenuHoverEffect.tres" type="StyleBox" id=11]
-[ext_resource path="res://Music and Sounds/100-200 PEOPLE CHEERING.wav" type="AudioStream" id=12]
-[ext_resource path="res://Music and Sounds/Menu Button Press.wav" type="AudioStream" id=13]
-[ext_resource path="res://Music and Sounds/CLEAR THIS AREA.wav" type="AudioStream" id=14]
+[ext_resource path="res://Music and Sounds/SFX/CLEAR THIS AREA.wav" type="AudioStream" id=12]
 [ext_resource path="res://Levels/construction.png" type="Texture" id=15]
 [ext_resource path="res://UI/UI_death_screen.png" type="Texture" id=16]
 [ext_resource path="res://UI/Death Menu.gd" type="Script" id=17]
@@ -20,6 +19,7 @@
 [ext_resource path="res://UI/UI_police_meter.png" type="Texture" id=19]
 [ext_resource path="res://UI/PlayerHUD.gd" type="Script" id=20]
 [ext_resource path="res://Fans/FanNavigationHandler.tscn" type="PackedScene" id=21]
+[ext_resource path="res://Music and Sounds/SFX/Menu Button Press.wav" type="AudioStream" id=22]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Node2D
@@ -1616,13 +1616,13 @@ custom_styles/disabled = SubResource( 122 )
 custom_styles/normal = SubResource( 123 )
 
 [node name="MenuMusic" type="AudioStreamPlayer" parent="UI/Pause Menu"]
-stream = ExtResource( 12 )
+stream = ExtResource( 4 )
 
 [node name="ContinueSFX" type="AudioStreamPlayer" parent="UI/Pause Menu"]
-stream = ExtResource( 13 )
+stream = ExtResource( 22 )
 
 [node name="ExitSFX" type="AudioStreamPlayer" parent="UI/Pause Menu"]
-stream = ExtResource( 14 )
+stream = ExtResource( 12 )
 
 [node name="Death Menu" type="Control" parent="UI"]
 pause_mode = 2
@@ -1680,13 +1680,13 @@ __meta__ = {
 }
 
 [node name="MenuMusic" type="AudioStreamPlayer" parent="UI/Death Menu"]
-stream = ExtResource( 12 )
+stream = ExtResource( 4 )
 
 [node name="ContinueSFX" type="AudioStreamPlayer" parent="UI/Death Menu"]
-stream = ExtResource( 13 )
+stream = ExtResource( 22 )
 
 [node name="ExitSFX" type="AudioStreamPlayer" parent="UI/Death Menu"]
-stream = ExtResource( 14 )
+stream = ExtResource( 12 )
 
 [node name="FanNavigationHandler" parent="." instance=ExtResource( 21 )]
 

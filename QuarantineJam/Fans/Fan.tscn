@@ -1,15 +1,19 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://AI/SoftCollision.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Player/iu.png" type="Texture" id=2]
+[ext_resource path="res://Player/Player_2_Sheet.png" type="Texture" id=2]
 [ext_resource path="res://Fans/Fan.gd" type="Script" id=3]
 [ext_resource path="res://Enemies/PlayerDetectionZone.tscn" type="PackedScene" id=4]
+[ext_resource path="res://AnimationBase/Animations.tscn" type="PackedScene" id=5]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 2.00706
-height = 3.46065
+radius = 3.84179
+height = 7.33988
 
 [sub_resource type="CircleShape2D" id=2]
+radius = 12.2987
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=3]
 
 [node name="Fan" type="KinematicBody2D"]
 collision_layer = 16
@@ -17,24 +21,41 @@ collision_mask = 4
 script = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
-modulate = Color( 0.352941, 1, 0.282353, 1 )
-scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 2 )
 vframes = 4
 hframes = 4
+frame = 12
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -0.146194, 4.53204 )
+position = Vector2( 0.00225115, 11.2225 )
 rotation = 1.5708
 shape = SubResource( 1 )
 
 [node name="SoftCollision" parent="." instance=ExtResource( 1 )]
 
 [node name="CollisionShape2D" parent="SoftCollision" index="0"]
+position = Vector2( 0.0428505, 2.66096 )
 shape = SubResource( 2 )
 
 [node name="PlayerDetectionZone" parent="." instance=ExtResource( 4 )]
 
+[node name="CollisionShape2D" parent="PlayerDetectionZone" index="0"]
+position = Vector2( 0.365276, 1.13243 )
+
+[node name="Animations" parent="." instance=ExtResource( 5 )]
+
+[node name="AnimationPlayer" parent="Animations" index="0"]
+root_node = NodePath("../..")
+
+[node name="AnimationTree" parent="Animations" index="1"]
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 3 )
+parameters/Idle/blend_position = Vector2( 0.400211, -0.121293 )
+parameters/Run/blend_position = Vector2( 0.093981, 0.464259 )
+
 [editable path="SoftCollision"]
 
 [editable path="PlayerDetectionZone"]
+
+[editable path="Animations"]

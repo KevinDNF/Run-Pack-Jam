@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Metal (3 Instruments) .wav-42d20dce3d8231bfe63014167e8e5a22.sample"
+
+[deps]
+
+source_file="res://Music and Sounds/Metal/Metal (3 Instruments) .wav"
+dest_files=[ "res://.import/Metal (3 Instruments) .wav-42d20dce3d8231bfe63014167e8e5a22.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

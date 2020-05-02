@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Rock (All Instruments).wav-7e3258a4167e3d5ca2ef290e7ad4b16a.sample"
+
+[deps]
+
+source_file="res://Music and Sounds/Rock/Rock (All Instruments).wav"
+dest_files=[ "res://.import/Rock (All Instruments).wav-7e3258a4167e3d5ca2ef290e7ad4b16a.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

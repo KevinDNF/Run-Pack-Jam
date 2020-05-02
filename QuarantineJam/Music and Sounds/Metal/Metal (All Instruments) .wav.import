@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Metal (All Instruments) .wav-7c982670d83b17c24b9e36bab2ade386.sample"
+
+[deps]
+
+source_file="res://Music and Sounds/Metal/Metal (All Instruments) .wav"
+dest_files=[ "res://.import/Metal (All Instruments) .wav-7c982670d83b17c24b9e36bab2ade386.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

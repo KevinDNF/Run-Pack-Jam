@@ -15,14 +15,20 @@ var target = null
 
 onready var playerDetectionZone = $PlayerDetectionZone
 onready var softCollision = $SoftCollision
+onready var animationTree = $Animations/AnimationTree
+onready var animationPlayer = $Animations/AnimationPlayer
+onready var animationState = animationTree.get("parameters/playback")
 
 var speed = 50
 var path : = PoolVector2Array() setget set_path
 var nav : Navigation2D = null setget set_nav
 var player
 
+var direction
+
 func _ready() -> void:
 	player.connect("player_is_moving", self, "set_state_to_following")
+	animationTree.active = true
 
 func _process(delta: float) -> void:
 		
@@ -65,6 +71,10 @@ func move_along_path(move_distance) -> void:
 			if distance_to_next == 0:
 				break
 				
+			direction = position.direction_to(path[0])
+			animationTree.set("parameters/Run/blend_position", direction)
+			animationState.travel("Run")
+			
 			position = starting_point.linear_interpolate(path[0], move_distance / distance_to_next)
 			
 			break	
