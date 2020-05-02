@@ -1483,7 +1483,7 @@ tile_data = PoolIntArray( 1966088, 5, 0, 1966099, 5, 0, 2359310, 6, 0, 2359321, 
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 120, 440 )
-scale = Vector2( 0.2, 0.2 )
+scale = Vector2( 0.8, 0.8 )
 ACCELERATION = 800
 MAX_SPEED = 100
 
@@ -1587,7 +1587,7 @@ position = Vector2( 892.137, 556.737 )
 scale = Vector2( 2.78503, 2.78503 )
 frames = SubResource( 119 )
 animation = "Animate"
-frame = 3
+frame = 1
 playing = true
 
 [node name="Pause Menu" type="Control" parent="UI"]
