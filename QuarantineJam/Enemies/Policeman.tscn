@@ -41,6 +41,10 @@ shape = SubResource( 2 )
 
 [node name="PlayerDetectionZone2" parent="." instance=ExtResource( 3 )]
 
+[node name="SlowdownTimer" type="Timer" parent="."]
+autostart = true
+[connection signal="timeout" from="SlowdownTimer" to="." method="_on_SlowdownTimer_timeout"]
+
 [editable path="SoftCollision"]
 
 [editable path="PlayerDetectionZone2"]
