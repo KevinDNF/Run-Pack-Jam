@@ -1,4 +1,4 @@
-[gd_scene load_steps=149 format=2]
+[gd_scene load_steps=144 format=2]
 
 [ext_resource path="res://Levels/city_tile_set.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
@@ -17,7 +17,7 @@
 [ext_resource path="res://Levels/construction.png" type="Texture" id=15]
 [ext_resource path="res://UI/UI_death_screen.png" type="Texture" id=16]
 [ext_resource path="res://UI/Death Menu.gd" type="Script" id=17]
-[ext_resource path="res://UI/UI_heart_meter_anim.png" type="Texture" id=18]
+[ext_resource path="res://UI/UI_heart_meter.png" type="Texture" id=18]
 [ext_resource path="res://UI/UI_police_meter.png" type="Texture" id=19]
 [ext_resource path="res://UI/PlayerHUD.gd" type="Script" id=20]
 [ext_resource path="res://Fans/FanNavigationHandler.tscn" type="PackedScene" id=21]
@@ -1412,30 +1412,6 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 } ]
 7/z_index = 0
 
-[sub_resource type="AtlasTexture" id=115]
-atlas = ExtResource( 18 )
-region = Rect2( 0, 16, 80, 16 )
-
-[sub_resource type="AtlasTexture" id=116]
-atlas = ExtResource( 18 )
-region = Rect2( 80, 16, 80, 16 )
-
-[sub_resource type="AtlasTexture" id=117]
-atlas = ExtResource( 18 )
-region = Rect2( 160, 16, 80, 16 )
-
-[sub_resource type="AtlasTexture" id=118]
-atlas = ExtResource( 18 )
-region = Rect2( 240, 16, 80, 16 )
-
-[sub_resource type="SpriteFrames" id=119]
-animations = [ {
-"frames": [ SubResource( 115 ), SubResource( 116 ), SubResource( 117 ), SubResource( 118 ) ],
-"loop": true,
-"name": "Animate",
-"speed": 6.0
-} ]
-
 [sub_resource type="StyleBoxEmpty" id=120]
 
 [sub_resource type="StyleBoxEmpty" id=121]
@@ -1454,7 +1430,8 @@ animations = [ {
 
 [node name="World" type="Node2D"]
 script = SubResource( 1 )
-maxNumberOfEnemies = 5
+maxNumberOfEnemies = 1
+targetNumberOfFans = 6
 
 [node name="Navigation2D" type="Navigation2D" parent="."]
 __meta__ = {
@@ -1563,26 +1540,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TotalFollowers_Bar" type="ColorRect" parent="UI/PlayerHUD"]
-margin_left = 836.0
-margin_top = 541.0
-margin_right = 984.0
-margin_bottom = 572.0
-color = Color( 0.192157, 0.192157, 0.192157, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Followers_Bar" type="ColorRect" parent="UI/PlayerHUD"]
-margin_left = 836.0
-margin_top = 541.0
-margin_right = 846.0
-margin_bottom = 572.0
-color = Color( 0.309804, 0.584314, 0.764706, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="Police Meter" type="Sprite" parent="UI/PlayerHUD"]
 position = Vector2( 893.026, 502.236 )
 scale = Vector2( 2.77579, 2.77579 )
@@ -1590,13 +1547,13 @@ texture = ExtResource( 19 )
 vframes = 6
 frame = 5
 
-[node name="Followers Meter" type="AnimatedSprite" parent="UI/PlayerHUD"]
-position = Vector2( 892.137, 556.737 )
-scale = Vector2( 2.78503, 2.78503 )
-frames = SubResource( 119 )
-animation = "Animate"
-frame = 1
-playing = true
+[node name="Followers Meter" type="Sprite" parent="UI/PlayerHUD"]
+position = Vector2( 891.369, 553.411 )
+scale = Vector2( 1.38651, 1.38651 )
+texture = ExtResource( 18 )
+vframes = 2
+hframes = 6
+frame = 6
 
 [node name="Pause Menu" type="Control" parent="UI"]
 pause_mode = 2

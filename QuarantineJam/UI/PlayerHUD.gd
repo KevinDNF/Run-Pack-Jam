@@ -3,9 +3,6 @@ extends Control
 onready var Police_Meter = $"Police Meter"
 onready var Followers_Meter = $"Followers Meter"
 
-onready var TotalFollower_Bar = $"Followers_Bar"
-onready var Follower_Bar = $"TotalFollowers_Bar"
-
 var Max_Followers = 2 setget set_max_followers
 var Max_Enemies = 2 setget set_max_enemies
 
@@ -29,10 +26,9 @@ func set_enemies(value):
 	Enemies = value
 	
 func set_followers_ui(current, max_value):
-	pass
-#	var pct = float(current) / float(max_value)
-#	var frame_index = clamp(int(pct * 5), 1, 5)
-#	Police_Meter.frame = frame_index
+	var pct = float(current) / float(max_value)
+	var frame_index = clamp(int(pct * 5) + 6, 6, 11)
+	Followers_Meter.frame = frame_index
 
 func set_enemies_ui(current, max_value):
 	var pct = float(current) / float(max_value)
