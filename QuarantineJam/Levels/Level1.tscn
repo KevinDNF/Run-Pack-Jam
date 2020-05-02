@@ -1626,6 +1626,9 @@ width = 3.0
 
 [node name="EnemyNavigationHandler" parent="." instance=ExtResource( 8 )]
 
+[node name="PoliceSpawnTimer" parent="EnemyNavigationHandler" index="2"]
+wait_time = 5.0
+
 [editable path="Policeman"]
 
 [editable path="EnemyNavigationHandler"]

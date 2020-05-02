@@ -15,8 +15,8 @@ var velocity = Vector2.ZERO
 var target = null
 
 onready var playerDetectionZone = $PlayerDetectionZone
-onready var playerDetectionCollider = $PlayerDetectionZone/CollisionShape2D
 onready var line2d = $Line2D
+onready var softCollision = $SoftCollision
 
 var speed = 50
 var path : = PoolVector2Array() setget set_path
@@ -25,22 +25,32 @@ var player
 
 
 func _process(delta: float) -> void:
-	if player != null:
-		var new_path = nav.get_simple_path(global_position, player.global_position)
-		path = new_path
-		line2d.points = new_path
+	if playerDetectionZone.is_player_within_range():
+		pass
+	else:
+		if player != null:
+			var new_path = nav.get_simple_path(global_position, player.global_position)
+			path = new_path
+			line2d.points = new_path
+		
+		var move_distance = speed * delta
+		move_along_path(move_distance)
 	
-	var move_distance = speed * delta
-	move_along_path(move_distance)
+		if softCollision.is_colliding():
+			velocity += softCollision.get_push_vector() * delta * 800
+		else:
+			velocity = Vector2.ZERO
+			
+		if velocity != Vector2.ZERO:
+			velocity = move_and_slide(velocity)
 
 func move_along_path(move_distance) -> void:
 	var starting_point = position
 	for i in range(path.size()):
 		var distance_to_next = starting_point.distance_to(path[0])
 		if move_distance <= distance_to_next and move_distance >= 0.0:
+			
 			position = starting_point.linear_interpolate(path[0], move_distance / distance_to_next)
-			#var direction = position.direction_to(path[0])
-			#velocity = velocity.move_toward(direction * speed, ACCELERATION * delta)
 			break	
 		elif move_distance < 0.0:
 			position = path[0]

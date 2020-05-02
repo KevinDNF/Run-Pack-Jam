@@ -1,11 +1,15 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Player/iu.png" type="Texture" id=1]
 [ext_resource path="res://Enemies/Policeman.gd" type="Script" id=2]
 [ext_resource path="res://Enemies/PlayerDetectionZone.tscn" type="PackedScene" id=3]
+[ext_resource path="res://AI/SoftCollision.tscn" type="PackedScene" id=4]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 19.0061
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 16.3703
 
 [node name="Policeman" type="KinematicBody2D"]
 scale = Vector2( 0.2, 0.2 )
@@ -19,9 +23,24 @@ vframes = 4
 hframes = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( 0, 2.92685 )
 shape = SubResource( 1 )
 
 [node name="PlayerDetectionZone" parent="." instance=ExtResource( 3 )]
+visible = false
 
 [node name="Line2D" type="Line2D" parent="."]
+
+[node name="SoftCollision" parent="." instance=ExtResource( 4 )]
+
+[node name="CollisionShape2D" parent="SoftCollision" index="0"]
+position = Vector2( -0.565605, 30.5432 )
+rotation = 1.5708
+shape = SubResource( 2 )
+
+[node name="PlayerDetectionZone2" parent="." instance=ExtResource( 3 )]
+
+[editable path="SoftCollision"]
+
+[editable path="PlayerDetectionZone2"]
