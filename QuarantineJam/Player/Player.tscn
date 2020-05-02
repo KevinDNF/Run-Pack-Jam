@@ -216,7 +216,7 @@ position = Vector2( 0, -24 )
 texture = ExtResource( 1 )
 vframes = 4
 hframes = 4
-frame = 13
+frame = 4
 
 [node name="CollisionBody" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -16 )
@@ -238,5 +238,5 @@ tree_root = SubResource( 22 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/playback = SubResource( 23 )
-parameters/Idle/blend_position = Vector2( 0.154098, 0.113793 )
+parameters/Idle/blend_position = Vector2( 0.00185525, -1.08965 )
 parameters/Run/blend_position = Vector2( 0, 0 )

@@ -17,12 +17,19 @@ onready var playerDetectionZone = $PlayerDetectionZone
 onready var line2d = $Line2D
 onready var softCollision = $SoftCollision
 onready var slowdownTimer = $SlowdownTimer
+onready var animationTree = $AnimationTree
+onready var animationPlayer = $AnimationPlayer
+onready var animationState = animationTree.get("parameters/playback")
 
 var speed = 50
 var path : = PoolVector2Array() setget set_path
 var nav : Navigation2D = null setget set_nav
 var player
 
+var direction
+
+func _ready() -> void:
+	animationTree.active = true
 
 func _process(delta: float) -> void:
 	
@@ -60,6 +67,11 @@ func move_along_path(move_distance) -> void:
 			if distance_to_next == 0:
 				break
 				
+			direction = position.direction_to(path[0])
+			var vector = Vector2.ZERO
+			vector.x = clamp(direction.x, -1, 1)
+			animationTree.set("parameters/Run/blend_position", direction)
+			animationState.travel("Run")
 			position = starting_point.linear_interpolate(path[0], move_distance / distance_to_next)
 			
 			break	
