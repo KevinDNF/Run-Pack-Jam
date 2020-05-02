@@ -19,7 +19,11 @@ onready var softCollision = $SoftCollision
 onready var slowdownTimer = $SlowdownTimer
 onready var animationTree = $AnimationTree
 onready var animationPlayer = $AnimationPlayer
+onready var sprite = $Sprite
 onready var animationState = animationTree.get("parameters/playback")
+
+var slowedSprite = preload("res://Enemies/Police_1_Sheet.png")
+var normalSprite = preload("res://Enemies/Police_2_Sheet.png")
 
 var speed = 50
 var path : = PoolVector2Array() setget set_path
@@ -36,9 +40,11 @@ func _process(delta: float) -> void:
 	match state:
 		NORMAL:
 			speed = normal_speed
+			sprite.texture = normalSprite
 			
 		SLOWED:
 			speed = slowed_speed
+			sprite.texture = slowedSprite
 	
 	if playerDetectionZone.is_player_within_range():
 		pass
