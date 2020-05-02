@@ -1587,7 +1587,7 @@ position = Vector2( 892.137, 556.737 )
 scale = Vector2( 2.78503, 2.78503 )
 frames = SubResource( 119 )
 animation = "Animate"
-frame = 1
+frame = 3
 playing = true
 
 [node name="Pause Menu" type="Control" parent="UI"]

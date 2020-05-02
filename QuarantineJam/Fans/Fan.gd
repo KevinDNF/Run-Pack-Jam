@@ -25,7 +25,12 @@ func _ready() -> void:
 	player.connect("player_is_moving", self, "set_state_to_following")
 
 func _process(delta: float) -> void:
-	
+		
+	if playerDetectionZone.is_player_within_range():
+		state = WATCHING
+	else:
+		state = FOLLOWING
+
 	match state:
 		FOLLOWING:
 			if playerDetectionZone.is_player_within_range():
@@ -35,7 +40,6 @@ func _process(delta: float) -> void:
 					var new_path = nav.get_simple_path(global_position, player.global_position)
 					path = new_path
 					
-				
 				var move_distance = speed * delta
 				move_along_path(move_distance)
 			
@@ -50,8 +54,8 @@ func _process(delta: float) -> void:
 		WATCHING:
 			if velocity != Vector2.ZERO:
 				velocity = move_and_slide(velocity)
-	
-	
+			
+
 
 func move_along_path(move_distance) -> void:
 	var starting_point = position
@@ -63,7 +67,6 @@ func move_along_path(move_distance) -> void:
 				
 			position = starting_point.linear_interpolate(path[0], move_distance / distance_to_next)
 			
-			print(velocity)
 			break	
 		elif move_distance < 0.0:
 			position = path[0]

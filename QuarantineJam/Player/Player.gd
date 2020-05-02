@@ -19,7 +19,6 @@ onready var animationPlayer = $AnimationPlayer
 onready var animationState = animationTree.get("parameters/playback")
 
 signal player_is_moving
-signal player_is_playing
 
 func _ready() -> void:
 	animationTree.active = true
@@ -32,7 +31,6 @@ func _physics_process(delta: float) -> void:
 			emit_signal("player_is_moving")
 		BAND_PLAYING:
 			band_playing_state(delta)
-			emit_signal("player_is_playing")
 
 func band_playing_state(delta: float):
 	animationState.travel("Idle")

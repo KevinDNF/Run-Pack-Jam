@@ -62,7 +62,6 @@ func move_along_path(move_distance) -> void:
 				
 			position = starting_point.linear_interpolate(path[0], move_distance / distance_to_next)
 			
-			print(velocity)
 			break	
 		elif move_distance < 0.0:
 			position = path[0]
