@@ -18,6 +18,7 @@ collision_mask = 4
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 0.196078, 0.509804, 1, 1 )
 texture = ExtResource( 1 )
 vframes = 4
 hframes = 4
@@ -38,13 +39,9 @@ position = Vector2( -0.565605, 30.5432 )
 rotation = 1.5708
 shape = SubResource( 2 )
 
-[node name="PlayerDetectionZone2" parent="." instance=ExtResource( 3 )]
-
 [node name="SlowdownTimer" type="Timer" parent="."]
 wait_time = 8.0
 autostart = true
 [connection signal="timeout" from="SlowdownTimer" to="." method="_on_SlowdownTimer_timeout"]
 
 [editable path="SoftCollision"]
-
-[editable path="PlayerDetectionZone2"]

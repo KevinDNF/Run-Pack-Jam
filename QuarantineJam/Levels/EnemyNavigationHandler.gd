@@ -9,9 +9,6 @@ onready var line2d = $Line2D
 
 signal new_policeman_created
 
-#testing, delete after
-var policeman
-
 func _ready() -> void:
 	world = get_node("../../World")
 	player = get_node("../../World/Player")

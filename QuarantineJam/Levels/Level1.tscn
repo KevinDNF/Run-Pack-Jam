@@ -1,4 +1,4 @@
-[gd_scene load_steps=163 format=2]
+[gd_scene load_steps=164 format=2]
 
 [ext_resource path="res://Levels/city_tile_set.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://Music and Sounds/100-200 PEOPLE CHEERING.wav" type="AudioStream" id=12]
 [ext_resource path="res://Music and Sounds/Menu Button Press.wav" type="AudioStream" id=13]
 [ext_resource path="res://Music and Sounds/CLEAR THIS AREA.wav" type="AudioStream" id=14]
+[ext_resource path="res://Fans/FanNavigationHandler.tscn" type="PackedScene" id=15]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Node2D
@@ -21,13 +22,20 @@ script/source = "extends Node2D
 export var maxNumberOfEnemies = 10
 var currentNumberOfEnemies = 0 setget set_current_number_of_enemies
 
+export var targetNumberOfFans = 20
+var currentNumberOfFans = 0 setget set_current_number_of_fans
+
 func set_current_number_of_enemies(value):
 	currentNumberOfEnemies += value
+
+func set_current_number_of_fans(value):
+	currentNumberOfFans += value
 
 func _on_EnemyNavigationHandler_new_policeman_created() -> void:
 	currentNumberOfEnemies += 1
 	
-
+func _on_FanNavigationHandler_new_fan_created() -> void:
+	currentNumberOfFans += 1
 "
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
@@ -1565,6 +1573,7 @@ resource_local_to_scene = true
 [node name="World" type="Node2D"]
 script = SubResource( 1 )
 maxNumberOfEnemies = 5
+targetNumberOfFans = 1
 
 [node name="Navigation2D" type="Navigation2D" parent="."]
 __meta__ = {
@@ -1648,11 +1657,14 @@ __meta__ = {
 
 [node name="EnemyNavigationHandler" parent="." instance=ExtResource( 8 )]
 
-[node name="SpawnPosition" parent="EnemyNavigationHandler" index="1"]
+[node name="SpawnPosition" parent="EnemyNavigationHandler" index="0"]
 position = Vector2( -42.1594, 118.602 )
 
-[node name="PoliceSpawnTimer" parent="EnemyNavigationHandler" index="2"]
+[node name="PoliceSpawnTimer" parent="EnemyNavigationHandler" index="1"]
 wait_time = 5.0
+
+[node name="Line2D" parent="EnemyNavigationHandler" index="2"]
+visible = true
 
 [node name="UI" type="CanvasLayer" parent="."]
 layer = 2
@@ -1731,10 +1743,18 @@ stream = ExtResource( 13 )
 
 [node name="ExitSFX" type="AudioStreamPlayer" parent="UI/Pause Menu"]
 stream = ExtResource( 14 )
+
+[node name="FanNavigationHandler" parent="." instance=ExtResource( 15 )]
+
+[node name="SpawnPosition" parent="FanNavigationHandler" index="0"]
+position = Vector2( 47.2556, 336.812 )
 [connection signal="new_policeman_created" from="EnemyNavigationHandler" to="." method="_on_EnemyNavigationHandler_new_policeman_created"]
 [connection signal="button_up" from="UI/Pause Menu/Continue_Btn" to="UI/Pause Menu" method="_on_Continue_Btn_button_up"]
 [connection signal="button_up" from="UI/Pause Menu/Quit_Btn" to="UI/Pause Menu" method="_on_Quit_Btn_button_up"]
+[connection signal="new_fan_created" from="FanNavigationHandler" to="." method="_on_FanNavigationHandler_new_fan_created"]
 
 [editable path="Policeman"]
 
 [editable path="EnemyNavigationHandler"]
+
+[editable path="FanNavigationHandler"]

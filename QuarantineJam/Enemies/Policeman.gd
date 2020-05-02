@@ -5,9 +5,6 @@ enum {
 	SLOWED
 }
 
-export var ACCELERATION = 300
-export var MAX_SPEED = 50
-export var FRICTION = 200
 export var playerDetectionRadiusSize = 600
 export var normal_speed = 50
 export var slowed_speed = 10
@@ -64,7 +61,6 @@ func move_along_path(move_distance) -> void:
 				break
 				
 			position = starting_point.linear_interpolate(path[0], move_distance / distance_to_next)
-			#position = move_and_slide(path[0], move_distance / distance_to_next)
 			
 			print(velocity)
 			break	
@@ -97,36 +93,3 @@ func _on_SlowdownTimer_timeout() -> void:
 			state = NORMAL
 			slowdownTimer.wait_time = 8
 	slowdownTimer.start()
-	
-	
-
-####
-#### Old code, keeping it here until I get navigation working
-####
-#func _ready() -> void:
-#	playerDetectionCollider.shape.radius = playerDetectionRadiusSize
-#
-#func _physics_process(delta: float) -> void:
-#	match state:
-#		NORMAL:
-#			if playerDetectionZone.can_see_player():
-#				var player = playerDetectionZone.player
-#				var direction = position.direction_to(player.global_position)
-#				velocity = velocity.move_toward(direction * MAX_SPEED, ACCELERATION * delta)
-#		SLOWED:
-#			pass
-#	velocity = move_and_slide(velocity)
-
-#func _physics_process(delta: float) -> void:
-#	if path.size() > 1 :
-#		var d = position.distance_to(path[0])
-#		if d > 2:
-#			position = position.linear_interpolate(path[0], speed * delta / d)
-#		else:
-#			path.remove(0)
-#	else:
-#		print("We've reached player")
-
-
-
-
