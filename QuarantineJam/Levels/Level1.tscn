@@ -1,4 +1,4 @@
-[gd_scene load_steps=138 format=2]
+[gd_scene load_steps=148 format=2]
 
 [ext_resource path="res://Levels/city_tile_set.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
@@ -15,6 +15,11 @@
 [ext_resource path="res://Music and Sounds/Menu Button Press.wav" type="AudioStream" id=13]
 [ext_resource path="res://Music and Sounds/CLEAR THIS AREA.wav" type="AudioStream" id=14]
 [ext_resource path="res://Levels/construction.png" type="Texture" id=15]
+[ext_resource path="res://UI/UI_death_screen.png" type="Texture" id=16]
+[ext_resource path="res://UI/Death Menu.gd" type="Script" id=17]
+[ext_resource path="res://UI/UI_heart_meter_anim.png" type="Texture" id=18]
+[ext_resource path="res://UI/UI_police_meter.png" type="Texture" id=19]
+[ext_resource path="res://UI/PlayerHUD.gd" type="Script" id=20]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Node2D
@@ -1417,6 +1422,30 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 
 [sub_resource type="StyleBoxEmpty" id=148]
 
+[sub_resource type="AtlasTexture" id=177]
+atlas = ExtResource( 18 )
+region = Rect2( 0, 16, 80, 16 )
+
+[sub_resource type="AtlasTexture" id=178]
+atlas = ExtResource( 18 )
+region = Rect2( 80, 16, 80, 16 )
+
+[sub_resource type="AtlasTexture" id=179]
+atlas = ExtResource( 18 )
+region = Rect2( 160, 16, 80, 16 )
+
+[sub_resource type="AtlasTexture" id=180]
+atlas = ExtResource( 18 )
+region = Rect2( 240, 16, 80, 16 )
+
+[sub_resource type="SpriteFrames" id=181]
+animations = [ {
+"frames": [ SubResource( 177 ), SubResource( 178 ), SubResource( 179 ), SubResource( 180 ) ],
+"loop": true,
+"name": "Animate",
+"speed": 6.0
+} ]
+
 [node name="World" type="Node2D"]
 script = SubResource( 1 )
 
@@ -1581,8 +1610,121 @@ stream = ExtResource( 13 )
 
 [node name="ExitSFX" type="AudioStreamPlayer" parent="UI/Pause Menu"]
 stream = ExtResource( 14 )
+
+[node name="PlayerHUD" type="Control" parent="UI"]
+pause_mode = 2
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -1024.0
+margin_top = -600.0
+script = ExtResource( 20 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect2" type="ColorRect" parent="UI/PlayerHUD"]
+margin_left = 833.0
+margin_top = 541.0
+margin_right = 987.0
+margin_bottom = 572.0
+color = Color( 0.192157, 0.192157, 0.192157, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="UI/PlayerHUD"]
+margin_left = 833.0
+margin_top = 541.0
+margin_right = 929.0
+margin_bottom = 572.0
+color = Color( 0.309804, 0.584314, 0.764706, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Police Meter" type="Sprite" parent="UI/PlayerHUD"]
+position = Vector2( 893.026, 502.594 )
+scale = Vector2( 2.77579, 2.77579 )
+texture = ExtResource( 19 )
+vframes = 6
+frame = 4
+
+[node name="Followers Meter" type="AnimatedSprite" parent="UI/PlayerHUD"]
+position = Vector2( 892.137, 556.737 )
+scale = Vector2( 2.78503, 2.78503 )
+frames = SubResource( 181 )
+animation = "Animate"
+frame = 1
+playing = true
+
+[node name="Death Menu" type="Control" parent="UI"]
+pause_mode = 2
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 17 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="UI/Death Menu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -4263.42
+margin_top = -2558.15
+margin_right = 4255.58
+margin_bottom = 2571.85
+color = Color( 0, 0, 0, 0.427451 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="UI/Death Menu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -246.0
+margin_top = -230.0
+margin_right = 246.0
+margin_bottom = 230.0
+texture = ExtResource( 16 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TryAgain_Btn" type="Button" parent="UI/Death Menu"]
+light_mask = 0
+margin_left = 417.747
+margin_top = 410.125
+margin_right = 714.747
+margin_bottom = 506.125
+custom_styles/hover = ExtResource( 11 )
+custom_styles/pressed = SubResource( 141 )
+custom_styles/focus = SubResource( 142 )
+custom_styles/disabled = SubResource( 143 )
+custom_styles/normal = SubResource( 144 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MenuMusic" type="AudioStreamPlayer" parent="UI/Death Menu"]
+stream = ExtResource( 12 )
+
+[node name="ContinueSFX" type="AudioStreamPlayer" parent="UI/Death Menu"]
+stream = ExtResource( 13 )
+
+[node name="ExitSFX" type="AudioStreamPlayer" parent="UI/Death Menu"]
+stream = ExtResource( 14 )
 [connection signal="button_up" from="UI/Pause Menu/Continue_Btn" to="UI/Pause Menu" method="_on_Continue_Btn_button_up"]
 [connection signal="button_up" from="UI/Pause Menu/Quit_Btn" to="UI/Pause Menu" method="_on_Quit_Btn_button_up"]
+[connection signal="button_up" from="UI/Death Menu/TryAgain_Btn" to="UI/Death Menu" method="_on_Continue_Btn_button_up"]
 
 [editable path="Policeman"]
 
