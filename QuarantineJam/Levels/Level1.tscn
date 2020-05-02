@@ -3,7 +3,6 @@
 [ext_resource path="res://Levels/city_tile_set.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Enemies/Policeman.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Player/Player_Running_Front.png" type="Texture" id=4]
 [ext_resource path="res://UI/UI_pause.png" type="Texture" id=5]
 [ext_resource path="res://Levels/Camera Rotation.gd" type="Script" id=6]
 [ext_resource path="res://Levels/buildings.png" type="Texture" id=7]
@@ -1412,7 +1411,7 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 } ]
 7/z_index = 0
 
-[sub_resource type="StyleBoxEmpty" id=115]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=115]
 
 [sub_resource type="StyleBoxEmpty" id=116]
 
@@ -1428,9 +1427,11 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 
 [sub_resource type="StyleBoxEmpty" id=122]
 
+[sub_resource type="StyleBoxEmpty" id=123]
+
 [node name="World" type="Node2D"]
 script = SubResource( 1 )
-maxNumberOfEnemies = 1
+maxNumberOfEnemies = 5
 
 [node name="Navigation2D" type="Navigation2D" parent="."]
 __meta__ = {
@@ -1496,14 +1497,8 @@ position = Vector2( 214.714, 164.149 )
 [node name="CollisionShape2D" parent="Policeman" index="1"]
 position = Vector2( 0, 0 )
 
-[node name="Sprite3" type="Sprite" parent="."]
-position = Vector2( 344, 352 )
-scale = Vector2( 0.560085, 0.560085 )
-texture = ExtResource( 4 )
-hframes = 3
-__meta__ = {
-"_edit_lock_": true
-}
+[node name="AnimationTree" parent="Policeman" index="7"]
+parameters/playback = SubResource( 115 )
 
 [node name="Line2D" type="Line2D" parent="."]
 width = 3.0
@@ -1601,10 +1596,10 @@ margin_top = 287.95
 margin_right = 708.4
 margin_bottom = 383.95
 custom_styles/hover = ExtResource( 11 )
-custom_styles/pressed = SubResource( 115 )
-custom_styles/focus = SubResource( 116 )
-custom_styles/disabled = SubResource( 117 )
-custom_styles/normal = SubResource( 118 )
+custom_styles/pressed = SubResource( 116 )
+custom_styles/focus = SubResource( 117 )
+custom_styles/disabled = SubResource( 118 )
+custom_styles/normal = SubResource( 119 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1615,10 +1610,10 @@ margin_top = 391.185
 margin_right = 700.106
 margin_bottom = 486.185
 custom_styles/hover = ExtResource( 11 )
-custom_styles/pressed = SubResource( 119 )
-custom_styles/focus = SubResource( 120 )
-custom_styles/disabled = SubResource( 121 )
-custom_styles/normal = SubResource( 122 )
+custom_styles/pressed = SubResource( 120 )
+custom_styles/focus = SubResource( 121 )
+custom_styles/disabled = SubResource( 122 )
+custom_styles/normal = SubResource( 123 )
 
 [node name="MenuMusic" type="AudioStreamPlayer" parent="UI/Pause Menu"]
 stream = ExtResource( 12 )
@@ -1676,10 +1671,10 @@ margin_top = 410.125
 margin_right = 714.747
 margin_bottom = 506.125
 custom_styles/hover = ExtResource( 11 )
-custom_styles/pressed = SubResource( 115 )
-custom_styles/focus = SubResource( 116 )
-custom_styles/disabled = SubResource( 117 )
-custom_styles/normal = SubResource( 118 )
+custom_styles/pressed = SubResource( 116 )
+custom_styles/focus = SubResource( 117 )
+custom_styles/disabled = SubResource( 118 )
+custom_styles/normal = SubResource( 119 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
