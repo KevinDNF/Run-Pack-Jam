@@ -1598,6 +1598,10 @@ position = Vector2( 20, 0 )
 [node name="Camera2D" type="Camera2D" parent="Player/Camera Rotation/Camera Offset"]
 current = true
 zoom = Vector2( 0.3, 0.3 )
+limit_left = -270
+limit_top = 30
+limit_right = 690
+limit_bottom = 680
 limit_smoothed = true
 drag_margin_h_enabled = true
 drag_margin_v_enabled = true
