@@ -18,10 +18,10 @@ func _ready() -> void:
 func _on_FanSpawnTimer_timeout() -> void:
 	if world.currentNumberOfFans < world.targetNumberOfFans:
 		var new_fan = fan_prefab.instance()
-		add_child(new_fan)
+		new_fan.player = player
 		new_fan.global_position = spawn_position
 		new_fan.nav = nav
-		new_fan.player = player
+		add_child(new_fan)
 		emit_signal("new_fan_created")
 	else:
 		pass

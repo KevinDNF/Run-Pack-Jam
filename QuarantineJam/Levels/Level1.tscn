@@ -1573,7 +1573,7 @@ resource_local_to_scene = true
 [node name="World" type="Node2D"]
 script = SubResource( 1 )
 maxNumberOfEnemies = 5
-targetNumberOfFans = 1
+targetNumberOfFans = 3
 
 [node name="Navigation2D" type="Navigation2D" parent="."]
 __meta__ = {
