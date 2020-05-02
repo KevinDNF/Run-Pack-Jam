@@ -4,6 +4,14 @@ export var ACCELERATION = 500
 export var MAX_SPEED = 80
 export var FRICTION = 500
 
+export var Active_Band_Members = 1 setget updateActiveBandMembers
+onready var band_members = [
+	$"Band_Members/Member_1",
+	$"Band_Members/Member_2",
+	$"Band_Members/Member_3",
+	$"Band_Members/Member_4",
+]
+
 onready var Running_Music = $"Running_Music"
 onready var Band_Playing = $"Band_Playing"
 var seek_position = 0
@@ -27,6 +35,7 @@ signal band_is_playing
 
 func _ready() -> void:
 	animationTree.active = true
+	updateActiveBandMembers(Active_Band_Members)
 	
 	
 func _physics_process(delta: float) -> void:
@@ -82,3 +91,13 @@ func toggleBandPlaying():
 		emit_signal("band_is_playing")
 	elif state == RUNNING:
 		emit_signal("player_is_moving")
+
+func updateActiveBandMembers(value):
+	Active_Band_Members = clamp(value, 1, band_members.size())
+	if band_members[0] == null:
+		return
+	for i in range(0, Active_Band_Members):
+		band_members[i].visible = true
+		
+	for i in range(Active_Band_Members, band_members.size()):
+		band_members[i].visible = false
