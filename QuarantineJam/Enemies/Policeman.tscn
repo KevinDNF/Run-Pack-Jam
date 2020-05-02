@@ -22,4 +22,3 @@ position = Vector2( 0, 2.92685 )
 shape = SubResource( 1 )
 
 [node name="PlayerDetectionZone" parent="." instance=ExtResource( 3 )]
-visible = false

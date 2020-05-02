@@ -32,6 +32,8 @@ func move_along_path(move_distance) -> void:
 		var distance_to_next = starting_point.distance_to(path[0])
 		if move_distance <= distance_to_next and move_distance >= 0.0:
 			position = starting_point.linear_interpolate(path[0], move_distance / distance_to_next)
+			#var direction = position.direction_to(path[0])
+			#velocity = velocity.move_toward(direction * speed, ACCELERATION * delta)
 			break	
 		elif move_distance < 0.0:
 			position = path[0]
