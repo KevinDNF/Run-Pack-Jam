@@ -64,6 +64,9 @@ func move_along_path(move_distance) -> void:
 				break
 				
 			position = starting_point.linear_interpolate(path[0], move_distance / distance_to_next)
+			#position = move_and_slide(path[0], move_distance / distance_to_next)
+			
+			print(velocity)
 			break	
 		elif move_distance < 0.0:
 			position = path[0]
@@ -86,14 +89,13 @@ func set_slowdown_timer_invterval(value: float):
 	
 func _on_SlowdownTimer_timeout() -> void:
 	slowdownTimer.stop()
-	# First we change state
 	match state:
 		NORMAL:
 			state = SLOWED
+			slowdownTimer.wait_time = 4
 		SLOWED:
 			state = NORMAL
-	# Then we change the timeout value
-	slowdownTimer.wait_time = 4 #replace with some randomly generated number
+			slowdownTimer.wait_time = 8
 	slowdownTimer.start()
 	
 	
