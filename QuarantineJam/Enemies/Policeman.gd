@@ -24,6 +24,15 @@ onready var animationState = animationTree.get("parameters/playback")
 
 var slowedSprite = preload("res://Enemies/Police_1_Sheet.png")
 var normalSprite = preload("res://Enemies/Police_2_Sheet.png")
+onready var speakerPhone = $SpeakerPhone
+
+onready var RadioTracks = [
+	"res://Music and Sounds/Radio/RADIO CHATTER 1.wav",
+	"res://Music and Sounds/Radio/RADIO CHATTER 2.wav",
+	"res://Music and Sounds/Radio/RADIO CHATTER 3.wav",
+	"res://Music and Sounds/Radio/RADIO CHATTER 4.wav",
+	"res://Music and Sounds/SFX/CLEAR THIS AREA.wav"
+]
 
 var speed = 50
 var path : = PoolVector2Array() setget set_path
@@ -31,9 +40,12 @@ var nav : Navigation2D = null setget set_nav
 var player
 
 var direction
-
+#
 func _ready() -> void:
 	animationTree.active = true
+	speakerPhone.stream = load(RadioTracks[randi()%RadioTracks.size()+0])
+	speakerPhone.volume_db = -12
+	speakerPhone.play()
 
 func _process(delta: float) -> void:
 	

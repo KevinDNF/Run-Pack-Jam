@@ -4,6 +4,10 @@ export var ACCELERATION = 500
 export var MAX_SPEED = 80
 export var FRICTION = 500
 
+onready var Running_Music = $"Running_Music"
+onready var Band_Playing = $"Band_Playing"
+var seek_position = 0
+
 enum {
 	RUNNING,
 	BAND_PLAYING
@@ -38,6 +42,9 @@ func band_playing_state(delta: float):
 	velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 	
 	if Input.is_action_just_pressed("band_playing"):
+		seek_position = Band_Playing.get_playback_position()
+		Band_Playing.stop()
+		Running_Music.play(0)
 		toggleBandPlaying()
 
 func move_state(delta: float):
@@ -61,6 +68,8 @@ func move_state(delta: float):
 	if Input.is_action_just_pressed("band_playing"):
 		animationTree.set("parameters/Idle/blend_position", Vector2.DOWN)
 		animationTree.set("parameters/Run/blend_position",  Vector2.DOWN)
+		Band_Playing.play(seek_position)
+		Running_Music.stop()
 		toggleBandPlaying()
 	
 func move():
