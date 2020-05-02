@@ -26,13 +26,19 @@ func set_enemies(value):
 	Enemies = value
 	
 func set_followers_ui(current, max_value):
-	var pct = float(current) / float(max_value)
+	var pct = get_percentage(current, max_value)
 	var frame_index = clamp(int(pct * 5) + 6, 6, 11)
 	Followers_Meter.frame = frame_index
 
 func set_enemies_ui(current, max_value):
-	var pct = float(current) / float(max_value)
+	var pct = get_percentage(current, max_value)
 	var frame_index = clamp(int(pct * 5), 1, 5)
 	Police_Meter.frame = frame_index
 
-
+func get_percentage(current, max_value):
+	var pct = float(current) / float(max_value)
+	return pct
+	
+func get_percentage_of_followers():
+	var pct = float(Followers) / float(Max_Followers)
+	return pct

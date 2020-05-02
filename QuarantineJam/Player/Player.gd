@@ -19,6 +19,7 @@ onready var animationPlayer = $AnimationPlayer
 onready var animationState = animationTree.get("parameters/playback")
 
 signal player_is_moving
+signal band_is_playing
 
 func _ready() -> void:
 	animationTree.active = true
@@ -67,3 +68,8 @@ func move():
 
 func toggleBandPlaying():
 	state = BAND_PLAYING if state == RUNNING else RUNNING
+	
+	if state == BAND_PLAYING:
+		emit_signal("band_is_playing")
+	elif state == RUNNING:
+		emit_signal("player_is_moving")

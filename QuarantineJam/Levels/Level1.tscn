@@ -1,4 +1,4 @@
-[gd_scene load_steps=144 format=2]
+[gd_scene load_steps=148 format=2]
 
 [ext_resource path="res://Levels/city_tile_set.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
@@ -12,6 +12,8 @@
 [ext_resource path="res://UI/Pause Menu.gd" type="Script" id=10]
 [ext_resource path="res://UI/MenuHoverEffect.tres" type="StyleBox" id=11]
 [ext_resource path="res://Music and Sounds/SFX/CLEAR THIS AREA.wav" type="AudioStream" id=12]
+[ext_resource path="res://Levels/Cheers.gd" type="Script" id=13]
+[ext_resource path="res://Music and Sounds/Cheering/1-5 PEOPLE CHEERING.wav" type="AudioStream" id=14]
 [ext_resource path="res://Levels/construction.png" type="Texture" id=15]
 [ext_resource path="res://UI/UI_death_screen.png" type="Texture" id=16]
 [ext_resource path="res://UI/Death Menu.gd" type="Script" id=17]
@@ -20,6 +22,8 @@
 [ext_resource path="res://UI/PlayerHUD.gd" type="Script" id=20]
 [ext_resource path="res://Fans/FanNavigationHandler.tscn" type="PackedScene" id=21]
 [ext_resource path="res://Music and Sounds/SFX/Menu Button Press.wav" type="AudioStream" id=22]
+[ext_resource path="res://Music and Sounds/Cheering/100-200 PEOPLE CHEERING.wav" type="AudioStream" id=23]
+[ext_resource path="res://Music and Sounds/Cheering/20-40 PEOPLE CHEERING.wav" type="AudioStream" id=24]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Node2D
@@ -1692,6 +1696,18 @@ stream = ExtResource( 12 )
 
 [node name="SpawnPosition" parent="FanNavigationHandler" index="0"]
 position = Vector2( 47.2556, 336.812 )
+
+[node name="Cheers" type="Node" parent="."]
+script = ExtResource( 13 )
+
+[node name="1-50Cheers" type="AudioStreamPlayer" parent="Cheers"]
+stream = ExtResource( 14 )
+
+[node name="20-40Cheers" type="AudioStreamPlayer" parent="Cheers"]
+stream = ExtResource( 24 )
+
+[node name="100-200Cheers" type="AudioStreamPlayer" parent="Cheers"]
+stream = ExtResource( 23 )
 [connection signal="new_policeman_created" from="EnemyNavigationHandler" to="." method="_on_EnemyNavigationHandler_new_policeman_created"]
 [connection signal="button_up" from="UI/Pause Menu/Continue_Btn" to="UI/Pause Menu" method="_on_Continue_Btn_button_up"]
 [connection signal="button_up" from="UI/Pause Menu/Quit_Btn" to="UI/Pause Menu" method="_on_Quit_Btn_button_up"]
