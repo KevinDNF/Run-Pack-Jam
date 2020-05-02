@@ -1,4 +1,4 @@
-[gd_scene load_steps=149 format=2]
+[gd_scene load_steps=144 format=2]
 
 [ext_resource path="res://Levels/city_tile_set.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
@@ -17,7 +17,7 @@
 [ext_resource path="res://Levels/construction.png" type="Texture" id=15]
 [ext_resource path="res://UI/UI_death_screen.png" type="Texture" id=16]
 [ext_resource path="res://UI/Death Menu.gd" type="Script" id=17]
-[ext_resource path="res://UI/UI_heart_meter_anim.png" type="Texture" id=18]
+[ext_resource path="res://UI/UI_heart_meter.png" type="Texture" id=18]
 [ext_resource path="res://UI/UI_police_meter.png" type="Texture" id=19]
 [ext_resource path="res://UI/PlayerHUD.gd" type="Script" id=20]
 [ext_resource path="res://Fans/FanNavigationHandler.tscn" type="PackedScene" id=21]
@@ -26,22 +26,30 @@
 script/source = "extends Node2D
 
 export var maxNumberOfEnemies = 10
-var currentNumberOfEnemies = 0  
+var currentNumberOfEnemies = 0 
 
 export var targetNumberOfFans = 20
-var currentNumberOfFans = 0  
-#
-#func set_current_number_of_enemies(value):
-#	currentNumberOfEnemies += value
-#
-#func set_current_number_of_fans(value):
-#	currentNumberOfFans += value
+var currentNumberOfFans = 0 
+
+onready var PlayerHud = $\"UI/PlayerHUD\"
+
+func _ready() -> void:
+	PlayerHud.Max_Enemies = maxNumberOfEnemies
+	PlayerHud.Max_Followers = targetNumberOfFans
 
 func _on_EnemyNavigationHandler_new_policeman_created() -> void:
 	currentNumberOfEnemies += 1
+	PlayerHud.Enemies = currentNumberOfEnemies
 	
 func _on_FanNavigationHandler_new_fan_created() -> void:
 	currentNumberOfFans += 1
+	PlayerHud.Followers = currentNumberOfFans
+	if (currentNumberOfFans >= targetNumberOfFans):
+		game_won()
+
+func game_won():
+	print(\"you have won the game!!!!\")
+	pass
 "
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
@@ -1404,29 +1412,15 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 } ]
 7/z_index = 0
 
-[sub_resource type="AtlasTexture" id=115]
-atlas = ExtResource( 18 )
-region = Rect2( 0, 16, 80, 16 )
+[sub_resource type="StyleBoxEmpty" id=115]
 
-[sub_resource type="AtlasTexture" id=116]
-atlas = ExtResource( 18 )
-region = Rect2( 80, 16, 80, 16 )
+[sub_resource type="StyleBoxEmpty" id=116]
 
-[sub_resource type="AtlasTexture" id=117]
-atlas = ExtResource( 18 )
-region = Rect2( 160, 16, 80, 16 )
+[sub_resource type="StyleBoxEmpty" id=117]
 
-[sub_resource type="AtlasTexture" id=118]
-atlas = ExtResource( 18 )
-region = Rect2( 240, 16, 80, 16 )
+[sub_resource type="StyleBoxEmpty" id=118]
 
-[sub_resource type="SpriteFrames" id=119]
-animations = [ {
-"frames": [ SubResource( 115 ), SubResource( 116 ), SubResource( 117 ), SubResource( 118 ) ],
-"loop": true,
-"name": "Animate",
-"speed": 6.0
-} ]
+[sub_resource type="StyleBoxEmpty" id=119]
 
 [sub_resource type="StyleBoxEmpty" id=120]
 
@@ -1434,20 +1428,9 @@ animations = [ {
 
 [sub_resource type="StyleBoxEmpty" id=122]
 
-[sub_resource type="StyleBoxEmpty" id=123]
-
-[sub_resource type="StyleBoxEmpty" id=124]
-
-[sub_resource type="StyleBoxEmpty" id=125]
-
-[sub_resource type="StyleBoxEmpty" id=126]
-
-[sub_resource type="StyleBoxEmpty" id=127]
-
 [node name="World" type="Node2D"]
 script = SubResource( 1 )
-maxNumberOfEnemies = 5
-targetNumberOfFans = 3
+maxNumberOfEnemies = 1
 
 [node name="Navigation2D" type="Navigation2D" parent="."]
 __meta__ = {
@@ -1548,47 +1531,28 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -1024.0
+margin_left = -1024.66
 margin_top = -600.0
+margin_right = -0.664307
 script = ExtResource( 20 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ColorRect2" type="ColorRect" parent="UI/PlayerHUD"]
-margin_left = 833.0
-margin_top = 541.0
-margin_right = 987.0
-margin_bottom = 572.0
-color = Color( 0.192157, 0.192157, 0.192157, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ColorRect" type="ColorRect" parent="UI/PlayerHUD"]
-margin_left = 833.0
-margin_top = 541.0
-margin_right = 929.0
-margin_bottom = 572.0
-color = Color( 0.309804, 0.584314, 0.764706, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="Police Meter" type="Sprite" parent="UI/PlayerHUD"]
-position = Vector2( 893.026, 502.594 )
+position = Vector2( 893.026, 502.236 )
 scale = Vector2( 2.77579, 2.77579 )
 texture = ExtResource( 19 )
 vframes = 6
-frame = 4
+frame = 5
 
-[node name="Followers Meter" type="AnimatedSprite" parent="UI/PlayerHUD"]
-position = Vector2( 892.137, 556.737 )
-scale = Vector2( 2.78503, 2.78503 )
-frames = SubResource( 119 )
-animation = "Animate"
-frame = 2
-playing = true
+[node name="Followers Meter" type="Sprite" parent="UI/PlayerHUD"]
+position = Vector2( 891.369, 553.411 )
+scale = Vector2( 1.38651, 1.38651 )
+texture = ExtResource( 18 )
+vframes = 2
+hframes = 6
+frame = 6
 
 [node name="Pause Menu" type="Control" parent="UI"]
 pause_mode = 2
@@ -1637,10 +1601,10 @@ margin_top = 287.95
 margin_right = 708.4
 margin_bottom = 383.95
 custom_styles/hover = ExtResource( 11 )
-custom_styles/pressed = SubResource( 120 )
-custom_styles/focus = SubResource( 121 )
-custom_styles/disabled = SubResource( 122 )
-custom_styles/normal = SubResource( 123 )
+custom_styles/pressed = SubResource( 115 )
+custom_styles/focus = SubResource( 116 )
+custom_styles/disabled = SubResource( 117 )
+custom_styles/normal = SubResource( 118 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1651,10 +1615,10 @@ margin_top = 391.185
 margin_right = 700.106
 margin_bottom = 486.185
 custom_styles/hover = ExtResource( 11 )
-custom_styles/pressed = SubResource( 124 )
-custom_styles/focus = SubResource( 125 )
-custom_styles/disabled = SubResource( 126 )
-custom_styles/normal = SubResource( 127 )
+custom_styles/pressed = SubResource( 119 )
+custom_styles/focus = SubResource( 120 )
+custom_styles/disabled = SubResource( 121 )
+custom_styles/normal = SubResource( 122 )
 
 [node name="MenuMusic" type="AudioStreamPlayer" parent="UI/Pause Menu"]
 stream = ExtResource( 12 )
@@ -1712,10 +1676,10 @@ margin_top = 410.125
 margin_right = 714.747
 margin_bottom = 506.125
 custom_styles/hover = ExtResource( 11 )
-custom_styles/pressed = SubResource( 120 )
-custom_styles/focus = SubResource( 121 )
-custom_styles/disabled = SubResource( 122 )
-custom_styles/normal = SubResource( 123 )
+custom_styles/pressed = SubResource( 115 )
+custom_styles/focus = SubResource( 116 )
+custom_styles/disabled = SubResource( 117 )
+custom_styles/normal = SubResource( 118 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
