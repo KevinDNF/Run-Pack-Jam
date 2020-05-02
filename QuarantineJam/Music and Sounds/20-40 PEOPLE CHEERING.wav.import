@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/20-40 PEOPLE CHEERING.wav-e1e80158fa4d9ee3b7a85dad669f3c02.sample"
+
+[deps]
+
+source_file="res://Music and Sounds/20-40 PEOPLE CHEERING.wav"
+dest_files=[ "res://.import/20-40 PEOPLE CHEERING.wav-e1e80158fa4d9ee3b7a85dad669f3c02.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
