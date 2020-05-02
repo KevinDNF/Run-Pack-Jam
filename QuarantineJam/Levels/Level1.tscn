@@ -1611,7 +1611,6 @@ editor_draw_drag_margin = true
 
 [node name="Policeman" parent="." instance=ExtResource( 3 )]
 position = Vector2( 214.714, 164.149 )
-scale = Vector2( 0.2, 0.2 )
 
 [node name="CollisionShape2D" parent="Policeman" index="1"]
 position = Vector2( 0, 0 )

@@ -16,13 +16,20 @@ var target = null
 
 onready var playerDetectionZone = $PlayerDetectionZone
 onready var playerDetectionCollider = $PlayerDetectionZone/CollisionShape2D
+onready var line2d = $Line2D
 
 var speed = 50
 var path : = PoolVector2Array() setget set_path
-#var nav_2d = null setget set_nav
+var nav : Navigation2D = null setget set_nav
+var player
 
 
 func _process(delta: float) -> void:
+	if player != null:
+		var new_path = nav.get_simple_path(global_position, player.global_position)
+		path = new_path
+		line2d.points = new_path
+	
 	var move_distance = speed * delta
 	move_along_path(move_distance)
 
@@ -48,6 +55,8 @@ func set_path(new_path) -> void:
 		return
 	set_process(true)
 
+func set_nav(value):
+	nav = value
 
 ####
 #### Old code, keeping it here until I get navigation working

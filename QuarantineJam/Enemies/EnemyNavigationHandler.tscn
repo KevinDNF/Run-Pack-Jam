@@ -16,7 +16,7 @@ shape = SubResource( 1 )
 [node name="SpawnPosition" type="Position2D" parent="."]
 
 [node name="PoliceSpawnTimer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 10.0
 autostart = true
 
 [node name="Line2D" type="Line2D" parent="."]
