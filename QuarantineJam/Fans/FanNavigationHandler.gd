@@ -6,13 +6,13 @@ var nav : Navigation2D
 var world
 onready var spawn_position = $SpawnPosition.global_position
 onready var spawnTimer = $FanSpawnTimer
-onready var humanTreeNode = $"../Humans"
+onready var humanTreeNode = $"../Elements"
 
 signal new_fan_created
 
 func _ready() -> void:
 	world = get_node("../../World")
-	player = get_node("../../World/Humans/Player")
+	player = get_node("../../World/Elements/Player")
 	nav = get_node("../../World/Navigation2D")
 	spawnTimer.stop()
 	
