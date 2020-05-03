@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Metal (1 Instrument).ogg-f430473a4d199415a56d8c7d73a78414.oggstr"
+
+[deps]
+
+source_file="res://Music and Sounds/Metal/Metal (1 Instrument).ogg"
+dest_files=[ "res://.import/Metal (1 Instrument).ogg-f430473a4d199415a56d8c7d73a78414.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

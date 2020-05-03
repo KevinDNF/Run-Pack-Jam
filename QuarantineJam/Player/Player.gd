@@ -12,6 +12,13 @@ onready var band_members = [
 	$"Band_Members/Member_4",
 ]
 
+var tracks = [
+	"res://Music and Sounds/Indie/Indie (1 Instrument).wav",
+	"res://Music and Sounds/Indie/Indie (2 Instrument).wav",
+	"res://Music and Sounds/Indie/Indie (3 Instrument).wav",
+	"res://Music and Sounds/Indie/Indie (All Instrument).wav"
+]
+
 onready var Running_Music = $"Running_Music"
 onready var Band_Playing = $"Band_Playing"
 var seek_position = 0

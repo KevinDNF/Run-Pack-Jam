@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Indie (All Instruments).ogg-45dec5723bf0863851d3a98105c36c28.oggstr"
+
+[deps]
+
+source_file="res://Music and Sounds/Indie/Indie (All Instruments).ogg"
+dest_files=[ "res://.import/Indie (All Instruments).ogg-45dec5723bf0863851d3a98105c36c28.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
