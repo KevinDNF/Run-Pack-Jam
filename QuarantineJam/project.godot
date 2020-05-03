@@ -98,6 +98,7 @@ pause={
 2d_physics/layer_5="Fans"
 2d_physics/layer_6="FanCollisions"
 2d_physics/layer_7="PoliceCollisions"
+2d_physics/layer_8="InstrumentCollisions"
 
 [rendering]
 

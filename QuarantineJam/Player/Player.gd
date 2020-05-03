@@ -38,6 +38,12 @@ onready var indieTracks = [
 	"res://Music and Sounds/Indie/Indie (All Instruments).ogg"
 ]
 
+onready var instruments = [
+	preload("res://Props/Guitar.tscn"),
+	preload("res://Props/SecondGuitar.tscn"),
+	preload("res://Props/BassGuitar.tscn"),
+	preload("res://Props/Drums.tscn")
+]
 
 export var currentGenre = 0 setget updateCurrentGenre
 onready var availableTracks = [indieTracks, punkTracks, rockTracks, metalTracks]
@@ -52,7 +58,7 @@ enum {
 }
 
 var state = RUNNING
-
+var numberOfHeldInstruments = 1
 var velocity = Vector2.ZERO
 var direction_vector = Vector2.LEFT #Store direction for non movement animations
 
@@ -120,6 +126,7 @@ func toggleBandPlaying():
 		emit_signal("band_is_playing")
 	elif state == RUNNING:
 		emit_signal("player_is_moving")
+		drop_all_instruments()
 
 func updateActiveBandMembers(value):
 	if (band_members == null):
@@ -149,3 +156,10 @@ func getCurrentTrack(genreNo, trackNo):
 	var y = clamp(trackNo, 0, g.size())
 	print("loading " + g[y])
 	return load(g[y])
+	
+func drop_all_instruments():
+	print("Inside drop all instruments")
+	for i in instruments:
+		var createdInstrument = i.instance()
+		get_node("/root/World/Elements").add_child(createdInstrument)
+		createdInstrument.global_position = global_position
