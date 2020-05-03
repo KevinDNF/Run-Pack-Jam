@@ -1801,7 +1801,8 @@ tile_data = PoolIntArray( 2031624, 5, 0, 2031635, 5, 0, 2359310, 6, 0, 2359321, 
 position = Vector2( 120, 440 )
 ACCELERATION = 800
 MAX_SPEED = 100
-Active_Band_Members = 4
+Active_Band_Members = 2
+currentGenre = 4
 
 [node name="Camera Rotation" type="Position2D" parent="Humans/Player"]
 script = ExtResource( 6 )

@@ -12,15 +12,38 @@ onready var band_members = [
 	$"Band_Members/Member_4",
 ]
 
-var tracks = [
-	"res://Music and Sounds/Indie/Indie (1 Instrument).wav",
-	"res://Music and Sounds/Indie/Indie (2 Instrument).wav",
-	"res://Music and Sounds/Indie/Indie (3 Instrument).wav",
-	"res://Music and Sounds/Indie/Indie (All Instrument).wav"
+onready var metalTracks = [
+	"res://Music and Sounds/Metal/Metal (1 Instrument).ogg",
+	"res://Music and Sounds/Metal/Metal (2 Instruments).ogg",
+	"res://Music and Sounds/Metal/Metal (3 Instruments).ogg",
+	"res://Music and Sounds/Metal/Metal (All Instruments).ogg"
+]
+onready var rockTracks = [
+	"res://Music and Sounds/Rock/Rock (1 INSTRUMENT).ogg",
+	"res://Music and Sounds/Rock/Rock (2 INSTRUMENTS).ogg",
+	"res://Music and Sounds/Rock/Rock (3 INSTRUMENTS).ogg",
+	"res://Music and Sounds/Rock/Rock (All Instruments).ogg"
+]
+onready var punkTracks = [
+	"res://Music and Sounds/Punk/Punk (1 INSTRUMENT.ogg",
+	"res://Music and Sounds/Punk/Punk (2INSTRUMENTS).ogg",
+	"res://Music and Sounds/Punk/Punk (3 INSTRUMENTS).ogg",
+	"res://Music and Sounds/Punk/Punk (All Instruments).ogg"
 ]
 
+onready var indieTracks = [
+	"res://Music and Sounds/Indie/Indie (1 Instrument).ogg",
+	"res://Music and Sounds/Indie/Indie (2 Instrument).ogg",
+	"res://Music and Sounds/Indie/Indie (3 Instruments).ogg",
+	"res://Music and Sounds/Indie/Indie (All Instruments).ogg"
+]
+
+
+export var currentGenre = 0 setget updateCurrentGenre
+onready var availableTracks = [indieTracks, punkTracks, rockTracks, metalTracks]
+
 onready var Running_Music = $"Running_Music"
-onready var Band_Playing = $"Band_Playing"
+onready var Band_Music = $"Band_Music"
 var seek_position = 0
 
 enum {
@@ -44,7 +67,6 @@ func _ready() -> void:
 	animationTree.active = true
 	updateActiveBandMembers(Active_Band_Members)
 	
-	
 func _physics_process(delta: float) -> void:
 	match(state):
 		RUNNING:
@@ -58,8 +80,8 @@ func band_playing_state(delta: float):
 	velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 	
 	if Input.is_action_just_pressed("band_playing"):
-		seek_position = Band_Playing.get_playback_position()
-		Band_Playing.stop()
+		seek_position = Band_Music.get_playback_position()
+		Band_Music.stop()
 		Running_Music.play(0)
 		toggleBandPlaying()
 
@@ -84,7 +106,7 @@ func move_state(delta: float):
 	if Input.is_action_just_pressed("band_playing"):
 		animationTree.set("parameters/Idle/blend_position", Vector2.DOWN)
 		animationTree.set("parameters/Run/blend_position",  Vector2.DOWN)
-		Band_Playing.play(seek_position)
+		Band_Music.play(seek_position)
 		Running_Music.stop()
 		toggleBandPlaying()
 	
@@ -103,10 +125,27 @@ func updateActiveBandMembers(value):
 	if (band_members == null):
 		Active_Band_Members = value
 		return;
-		
+	
 	Active_Band_Members = clamp(value, 1, band_members.size())
+	
+	seek_position = Band_Music.get_playback_position()
+	var wasBandPlaying = Band_Music.playing
+	Band_Music.stream = getCurrentTrack(currentGenre, Active_Band_Members - 1)
+	if (wasBandPlaying):
+		Band_Music.play(seek_position)
+	
 	for i in range(0, Active_Band_Members):
 		band_members[i].visible = true
 		
 	for i in range(Active_Band_Members, band_members.size()):
 		band_members[i].visible = false
+func updateCurrentGenre(value):
+	currentGenre = value
+	updateActiveBandMembers(Active_Band_Members)
+
+func getCurrentTrack(genreNo, trackNo):
+	var x = clamp(genreNo, 0, availableTracks.size() - 1)
+	var g = availableTracks[x]
+	var y = clamp(trackNo, 0, g.size())
+	print("loading " + g[y])
+	return load(g[y])
