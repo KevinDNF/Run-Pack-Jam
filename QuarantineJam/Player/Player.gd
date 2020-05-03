@@ -93,9 +93,11 @@ func toggleBandPlaying():
 		emit_signal("player_is_moving")
 
 func updateActiveBandMembers(value):
+	if (band_members == null):
+		Active_Band_Members = value
+		return;
+		
 	Active_Band_Members = clamp(value, 1, band_members.size())
-	if band_members[0] == null:
-		return
 	for i in range(0, Active_Band_Members):
 		band_members[i].visible = true
 		

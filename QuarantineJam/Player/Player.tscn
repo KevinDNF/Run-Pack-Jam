@@ -17,7 +17,7 @@ resource_name = "IdleDown"
 length = 0.1
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Band_Members/Member_1:frame")
+tracks/0/path = NodePath("Band_Members/Member_4:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -29,7 +29,7 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Band_Members/Member_2:frame")
+tracks/1/path = NodePath("Band_Members/Member_3:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -41,7 +41,7 @@ tracks/1/keys = {
 "values": [ 0 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Band_Members/Member_3:frame")
+tracks/2/path = NodePath("Band_Members/Member_2:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -53,7 +53,7 @@ tracks/2/keys = {
 "values": [ 0 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Band_Members/Member_4:frame")
+tracks/3/path = NodePath("Band_Members/Member_1:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -70,7 +70,7 @@ resource_name = "IdleLeft"
 length = 0.1
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Band_Members/Member_1:frame")
+tracks/0/path = NodePath("Band_Members/Member_4:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -82,7 +82,7 @@ tracks/0/keys = {
 "values": [ 8 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Band_Members/Member_2:frame")
+tracks/1/path = NodePath("Band_Members/Member_3:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -94,7 +94,7 @@ tracks/1/keys = {
 "values": [ 8 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Band_Members/Member_3:frame")
+tracks/2/path = NodePath("Band_Members/Member_2:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -106,7 +106,7 @@ tracks/2/keys = {
 "values": [ 8 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Band_Members/Member_4:frame")
+tracks/3/path = NodePath("Band_Members/Member_1:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -123,7 +123,7 @@ resource_name = "IdleRight"
 length = 0.1
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Band_Members/Member_1:frame")
+tracks/0/path = NodePath("Band_Members/Member_4:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -135,7 +135,7 @@ tracks/0/keys = {
 "values": [ 12 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Band_Members/Member_2:frame")
+tracks/1/path = NodePath("Band_Members/Member_3:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -147,7 +147,7 @@ tracks/1/keys = {
 "values": [ 12 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Band_Members/Member_3:frame")
+tracks/2/path = NodePath("Band_Members/Member_2:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -159,7 +159,7 @@ tracks/2/keys = {
 "values": [ 12 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Band_Members/Member_4:frame")
+tracks/3/path = NodePath("Band_Members/Member_1:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -176,7 +176,7 @@ resource_name = "IdleUp"
 length = 0.1
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Band_Members/Member_1:frame")
+tracks/0/path = NodePath("Band_Members/Member_4:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -188,7 +188,7 @@ tracks/0/keys = {
 "values": [ 4 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Band_Members/Member_2:frame")
+tracks/1/path = NodePath("Band_Members/Member_3:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -200,7 +200,7 @@ tracks/1/keys = {
 "values": [ 4 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Band_Members/Member_3:frame")
+tracks/2/path = NodePath("Band_Members/Member_2:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -212,7 +212,7 @@ tracks/2/keys = {
 "values": [ 4 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Band_Members/Member_4:frame")
+tracks/3/path = NodePath("Band_Members/Member_1:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -229,7 +229,7 @@ resource_name = "RunningDown"
 length = 0.3
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Band_Members/Member_1:frame")
+tracks/0/path = NodePath("Band_Members/Member_4:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -241,7 +241,7 @@ tracks/0/keys = {
 "values": [ 1, 2, 3, 2 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Band_Members/Member_2:frame")
+tracks/1/path = NodePath("Band_Members/Member_3:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -253,7 +253,7 @@ tracks/1/keys = {
 "values": [ 1, 2, 3, 0 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Band_Members/Member_3:frame")
+tracks/2/path = NodePath("Band_Members/Member_2:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -265,7 +265,7 @@ tracks/2/keys = {
 "values": [ 1, 2, 3, 0 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Band_Members/Member_4:frame")
+tracks/3/path = NodePath("Band_Members/Member_1:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -282,7 +282,7 @@ resource_name = "RunningLeft"
 length = 0.3
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Band_Members/Member_1:frame")
+tracks/0/path = NodePath("Band_Members/Member_4:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -294,7 +294,7 @@ tracks/0/keys = {
 "values": [ 9, 10, 11, 10 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Band_Members/Member_2:frame")
+tracks/1/path = NodePath("Band_Members/Member_3:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -306,7 +306,7 @@ tracks/1/keys = {
 "values": [ 9, 10, 11, 8 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Band_Members/Member_3:frame")
+tracks/2/path = NodePath("Band_Members/Member_2:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -318,7 +318,7 @@ tracks/2/keys = {
 "values": [ 9, 10, 11, 8 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Band_Members/Member_4:frame")
+tracks/3/path = NodePath("Band_Members/Member_1:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -335,7 +335,7 @@ resource_name = "RunningRight"
 length = 0.3
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Band_Members/Member_1:frame")
+tracks/0/path = NodePath("Band_Members/Member_4:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -347,7 +347,7 @@ tracks/0/keys = {
 "values": [ 13, 14, 15, 12 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Band_Members/Member_2:frame")
+tracks/1/path = NodePath("Band_Members/Member_3:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -359,7 +359,7 @@ tracks/1/keys = {
 "values": [ 13, 14, 15, 12 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Band_Members/Member_3:frame")
+tracks/2/path = NodePath("Band_Members/Member_2:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -371,7 +371,7 @@ tracks/2/keys = {
 "values": [ 13, 14, 15, 12 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Band_Members/Member_4:frame")
+tracks/3/path = NodePath("Band_Members/Member_1:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -388,7 +388,7 @@ resource_name = "RunningUp"
 length = 0.3
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Band_Members/Member_1:frame")
+tracks/0/path = NodePath("Band_Members/Member_4:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -400,7 +400,7 @@ tracks/0/keys = {
 "values": [ 5, 6, 7, 6 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Band_Members/Member_2:frame")
+tracks/1/path = NodePath("Band_Members/Member_3:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -412,7 +412,7 @@ tracks/1/keys = {
 "values": [ 5, 6, 7, 4 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Band_Members/Member_3:frame")
+tracks/2/path = NodePath("Band_Members/Member_2:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -424,7 +424,7 @@ tracks/2/keys = {
 "values": [ 5, 6, 7, 4 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Band_Members/Member_4:frame")
+tracks/3/path = NodePath("Band_Members/Member_1:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -503,36 +503,40 @@ start_node = "Idle"
 [node name="Player" type="KinematicBody2D"]
 collision_mask = 4
 script = ExtResource( 2 )
-Active_Band_Members = 3
 
 [node name="Band_Members" type="YSort" parent="."]
+position = Vector2( 0, -1 )
 
-[node name="Member_1" type="Sprite" parent="Band_Members"]
+[node name="Member_4" type="Sprite" parent="Band_Members"]
 position = Vector2( 0, -24 )
 texture = ExtResource( 1 )
 vframes = 4
 hframes = 4
+frame = 8
 
-[node name="Member_2" type="Sprite" parent="Band_Members"]
+[node name="Member_3" type="Sprite" parent="Band_Members"]
 position = Vector2( 8, -16 )
 texture = ExtResource( 5 )
 vframes = 4
 hframes = 4
+frame = 8
 
-[node name="Member_3" type="Sprite" parent="Band_Members"]
+[node name="Member_2" type="Sprite" parent="Band_Members"]
 position = Vector2( -8, -16 )
 texture = ExtResource( 7 )
 vframes = 4
 hframes = 4
+frame = 8
 
-[node name="Member_4" type="Sprite" parent="Band_Members"]
+[node name="Member_1" type="Sprite" parent="Band_Members"]
 position = Vector2( 0, -11 )
 texture = ExtResource( 6 )
 vframes = 4
 hframes = 4
+frame = 8
 
 [node name="CollisionBody" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -16 )
+position = Vector2( 0.244179, -4.82575 )
 rotation = 1.5708
 shape = SubResource( 1 )
 
@@ -551,7 +555,7 @@ tree_root = SubResource( 22 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/playback = SubResource( 23 )
-parameters/Idle/blend_position = Vector2( -0.279831, 0.5225 )
+parameters/Idle/blend_position = Vector2( -0.131996, -0.11672 )
 parameters/Run/blend_position = Vector2( 0.00527978, -0.00549996 )
 
 [node name="Band_Playing" type="AudioStreamPlayer" parent="."]
