@@ -38,11 +38,20 @@ onready var indieTracks = [
 	"res://Music and Sounds/Indie/Indie (All Instruments).ogg"
 ]
 
-onready var instruments = [
+onready var instrumentScenes = [
 	preload("res://Props/Guitar.tscn"),
 	preload("res://Props/SecondGuitar.tscn"),
 	preload("res://Props/BassGuitar.tscn"),
 	preload("res://Props/Drums.tscn")
+]
+
+onready var instruments = []
+
+var instrumentsAtHand = [
+	false,
+	false,
+	false,
+	false
 ]
 
 export var currentGenre = 0 setget updateCurrentGenre
@@ -141,11 +150,16 @@ func updateActiveBandMembers(value):
 	if (wasBandPlaying):
 		Band_Music.play(seek_position)
 	
-	for i in range(0, Active_Band_Members):
+	for i in range(instruments.size(), Active_Band_Members):
 		band_members[i].visible = true
+		var createdInstrument = instrumentScenes[i].instance()
+		createdInstrument.id = i
+		instruments.append(createdInstrument)
 		
 	for i in range(Active_Band_Members, band_members.size()):
 		band_members[i].visible = false
+	
+		
 func updateCurrentGenre(value):
 	currentGenre = value
 	updateActiveBandMembers(Active_Band_Members)
@@ -158,8 +172,13 @@ func getCurrentTrack(genreNo, trackNo):
 	return load(g[y])
 	
 func drop_all_instruments():
-	print("Inside drop all instruments")
-	for i in instruments:
-		var createdInstrument = i.instance()
-		get_node("/root/World/Elements").add_child(createdInstrument)
-		createdInstrument.global_position = global_position
+	var a = instruments
+	for i in range(0, Active_Band_Members):
+		get_node("/root/World/Elements").add_child(instruments[i])
+		instruments[i].global_position = global_position
+		instrumentsAtHand[i] = false
+
+func pickup_instrument(id):
+	instruments[id].get_parent().remove_child(instruments[id])
+	instrumentsAtHand[id] = true
+	
