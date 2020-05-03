@@ -1809,7 +1809,6 @@ tile_data = PoolIntArray( 2031624, 5, 0, 2031635, 5, 0, 2359310, 6, 0, 2359321, 
 position = Vector2( 120, 440 )
 ACCELERATION = 800
 MAX_SPEED = 100
-Active_Band_Members = 2
 currentGenre = 4
 
 [node name="Camera Rotation" type="Position2D" parent="Humans/Player"]
@@ -2028,6 +2027,13 @@ __meta__ = {
 stream = ExtResource( 22 )
 
 [node name="ExitSFX" type="AudioStreamPlayer" parent="UI/Death Menu"]
+
+[node name="GoToTruck" type="Control" parent="UI"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Cheers" type="Node" parent="."]
 script = ExtResource( 13 )

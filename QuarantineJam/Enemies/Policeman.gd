@@ -43,7 +43,7 @@ var player
 var direction
 
 func _ready() -> void:
-	world = get_node("../../../World")
+	world = get_tree()
 	animationTree.active = true
 	speakerPhone.stream = load(RadioTracks[randi()%RadioTracks.size()+0])
 	speakerPhone.volume_db = -12
