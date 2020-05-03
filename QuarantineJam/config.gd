@@ -3,6 +3,7 @@ extends Node
 var STARTING_LEVEL = 0
 var current_level = STARTING_LEVEL setget update_level_values
 var MAX_LEVELS = 3
+var SPAWN_TIMER = 5
 
 var LEVELS = [
 	"res://Levels/Level1.tscn",

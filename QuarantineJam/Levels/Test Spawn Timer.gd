@@ -5,6 +5,7 @@ var toggle = false
 
 func _ready() -> void:
 	world = get_node("../../World")
+	wait_time = Config.SPAWN_TIMER
 	
 func _on_Test_Spawn_Timer_timeout() -> void:
 	match toggle:

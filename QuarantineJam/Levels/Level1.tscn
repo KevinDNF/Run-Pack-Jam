@@ -1,4 +1,4 @@
-[gd_scene load_steps=170 format=2]
+[gd_scene load_steps=179 format=2]
 
 [ext_resource path="res://Levels/city_tile_set.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
@@ -32,6 +32,10 @@
 [ext_resource path="res://UI/Win Screen.gd" type="Script" id=30]
 [ext_resource path="res://Vehicles/BandTruck.tscn" type="PackedScene" id=31]
 [ext_resource path="res://Band/BandMemberNavigationHandler.tscn" type="PackedScene" id=32]
+[ext_resource path="res://UI/Level Select.gd" type="Script" id=33]
+[ext_resource path="res://UI/UI_lvl4.png" type="Texture" id=34]
+[ext_resource path="res://UI/UI_lvl2.png" type="Texture" id=35]
+[ext_resource path="res://UI/UI_lvl1.png" type="Texture" id=36]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Node2D
@@ -55,12 +59,14 @@ onready var NextLevelMenu = $\"UI/Next Level Screen\"
 onready var WinMenu = $\"UI/Win Screen\"
 onready var BandTruck = $\"Elements/BandTruck\"
 onready var Player = $\"Elements/Player\"
+onready var LevelText = $\"UI/Level Select\"
 
 func _ready() -> void:
 	print(\"Starting level:\" + str(Config.current_level))
 	PlayerHud.Max_Enemies = maxNumberOfEnemies
 	PlayerHud.Max_Followers = targetNumberOfFans
 	Player.currentGenre = Config.current_level
+	LevelText.showLevel(Config.current_level)
 
 func _on_EnemyNavigationHandler_new_policeman_created() -> void:
 	currentNumberOfEnemies += 1
@@ -1831,6 +1837,89 @@ tracks/0/keys = {
 
 [sub_resource type="StyleBoxEmpty" id=137]
 
+[sub_resource type="Animation" id=138]
+resource_name = "Flashing"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("lvl1:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true, false ]
+}
+
+[sub_resource type="Animation" id=139]
+resource_name = "Flashing"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("lvl2:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true, false ]
+}
+
+[sub_resource type="Animation" id=140]
+resource_name = "Flashing"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("lvl3:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true, false ]
+}
+
+[sub_resource type="Animation" id=141]
+resource_name = "Flashing"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("lvl4:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true, false ]
+}
+
+[sub_resource type="Animation" id=142]
+resource_name = "Duration"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
 [node name="World" type="Node2D"]
 script = SubResource( 1 )
 
@@ -2243,6 +2332,83 @@ stream = ExtResource( 4 )
 stream = ExtResource( 22 )
 
 [node name="ExitSFX" type="AudioStreamPlayer" parent="UI/Pause Menu"]
+
+[node name="Level Select" type="Control" parent="UI"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 33 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="lvl1" type="TextureRect" parent="UI/Level Select"]
+visible = false
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -301.632
+margin_top = 7.15994
+margin_right = 375.368
+margin_bottom = 226.16
+texture = ExtResource( 36 )
+expand = true
+stretch_mode = 6
+
+[node name="lvl2" type="TextureRect" parent="UI/Level Select"]
+visible = false
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -301.632
+margin_top = 7.15994
+margin_right = 375.368
+margin_bottom = 226.16
+texture = ExtResource( 35 )
+expand = true
+stretch_mode = 6
+
+[node name="lvl3" type="TextureRect" parent="UI/Level Select"]
+visible = false
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -301.632
+margin_top = 7.15994
+margin_right = 375.368
+margin_bottom = 226.16
+texture = ExtResource( 34 )
+expand = true
+stretch_mode = 6
+
+[node name="lvl4" type="TextureRect" parent="UI/Level Select"]
+visible = false
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -301.632
+margin_top = 7.15994
+margin_right = 375.368
+margin_bottom = 226.16
+texture = ExtResource( 36 )
+expand = true
+stretch_mode = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/Level Select"]
+playback_speed = 0.5
+anims/Flashing = SubResource( 138 )
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="UI/Level Select"]
+playback_speed = 0.5
+anims/Flashing = SubResource( 139 )
+
+[node name="AnimationPlayer3" type="AnimationPlayer" parent="UI/Level Select"]
+playback_speed = 0.5
+anims/Flashing = SubResource( 140 )
+
+[node name="AnimationPlayer4" type="AnimationPlayer" parent="UI/Level Select"]
+playback_speed = 0.5
+anims/Flashing = SubResource( 141 )
+
+[node name="Duration" type="AnimationPlayer" parent="UI/Level Select"]
+playback_speed = 0.2
+anims/Duration = SubResource( 142 )
 
 [node name="Cheers" type="Node" parent="."]
 script = ExtResource( 13 )
