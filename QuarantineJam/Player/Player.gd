@@ -49,9 +49,9 @@ onready var instruments = []
 
 var instrumentsAtHand = [
 	true,
-	false,
-	false,
-	false
+	true,
+	true,
+	true
 ]
 
 export var currentGenre = 0 setget updateCurrentGenre
@@ -117,7 +117,7 @@ func move_state(delta: float):
 	
 	move()
 	
-	if Input.is_action_just_pressed("band_playing") and get_number_of_held_instruments() == Active_Band_Members:
+	if Input.is_action_just_pressed("band_playing") and holding_all_instruments():
 		animationTree.set("parameters/Idle/blend_position", Vector2.DOWN)
 		animationTree.set("parameters/Run/blend_position",  Vector2.DOWN)
 		Band_Music.play(seek_position)
@@ -174,22 +174,29 @@ func getCurrentTrack(genreNo, trackNo):
 func drop_all_instruments():
 	var a = instruments
 	for i in range(0, Active_Band_Members):
+		var current_instrumern = instrumentScenes[i].instance()
+		instruments[i] = current_instrumern
+		current_instrumern.id = i
 		get_node("/root/World/Elements").add_child(instruments[i])
-		var dropOffset = Vector2(30, 30)
+		var dropOffset = Vector2((randi()% 50 + -50) * 2, (randi()% 50 + -50) * 2)
 		var dropPosition = global_position + dropOffset
 		instruments[i].global_position = dropPosition
 		instrumentsAtHand[i] = false
 
 func pickup_instrument(id):
-	instruments[id].get_parent().remove_child(instruments[id])
+	var p = instruments[id].get_parent()
+	var el = instruments[id]
+	el.queue_free()
+	
+	
+	
 	instrumentsAtHand[id] = true
 	
-func get_number_of_held_instruments():
-	var numberOfInstrumentsAtHand = 0
-	for i in instrumentsAtHand:
-		if i == true:
-			numberOfInstrumentsAtHand += 1
-	return numberOfInstrumentsAtHand
+func holding_all_instruments():
+	for i in range(0, Active_Band_Members):
+		if instrumentsAtHand[i] == false:
+			return false
+	return true
 
 func _on_IntrumentPickupRadius_body_entered(body: Node) -> void:
 	pickup_instrument(body.id)
