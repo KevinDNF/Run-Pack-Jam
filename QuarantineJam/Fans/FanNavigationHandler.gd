@@ -5,6 +5,7 @@ var player
 var nav : Navigation2D
 var world
 onready var spawn_position = $SpawnPosition.global_position
+onready var spawnTimer = $FanSpawnTimer
 
 signal new_fan_created
 
@@ -12,8 +13,7 @@ func _ready() -> void:
 	world = get_node("../../World")
 	player = get_node("../../World/Player")
 	nav = get_node("../../World/Navigation2D")
-	
-	
+	spawnTimer.stop()
 	
 func _on_FanSpawnTimer_timeout() -> void:
 	if world.currentNumberOfFans < world.targetNumberOfFans:
@@ -25,3 +25,9 @@ func _on_FanSpawnTimer_timeout() -> void:
 		emit_signal("new_fan_created")
 	else:
 		pass
+
+func enable_spawn_timer():
+	spawnTimer.start()
+	
+func disable_spawn_timer():
+	spawnTimer.stop()

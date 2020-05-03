@@ -34,6 +34,9 @@ var currentNumberOfEnemies = 0
 export var targetNumberOfFans = 20
 var currentNumberOfFans = 0 
 
+onready var enemyNavigationHandler = $EnemyNavigationHandler
+onready var fanNavigationHandler = $FanNavigationHandler
+
 onready var PlayerHud = $\"UI/PlayerHUD\"
 
 func _ready() -> void:
@@ -53,6 +56,18 @@ func _on_FanNavigationHandler_new_fan_created() -> void:
 func game_won():
 	print(\"you have won the game!!!!\")
 	pass
+
+func start_spawning_police():
+	enemyNavigationHandler.enable_spawn_timer()
+	
+func stop_spawning_police():
+	enemyNavigationHandler.disable_spawn_timer()
+	
+func start_spawning_fans():
+	fanNavigationHandler.enable_spawn_timer()
+	
+func stop_spawning_fans():
+	fanNavigationHandler.disable_spawn_timer()
 "
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
