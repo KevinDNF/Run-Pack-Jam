@@ -1,4 +1,4 @@
-[gd_scene load_steps=156 format=2]
+[gd_scene load_steps=160 format=2]
 
 [ext_resource path="res://Levels/city_tile_set.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Levels/roads.png" type="Texture" id=9]
 [ext_resource path="res://UI/Pause Menu.gd" type="Script" id=10]
 [ext_resource path="res://UI/MenuHoverEffect.tres" type="StyleBox" id=11]
+[ext_resource path="res://UI/GoToTruck.gd" type="Script" id=12]
 [ext_resource path="res://Levels/Cheers.gd" type="Script" id=13]
 [ext_resource path="res://Music and Sounds/Cheering/1-5 PEOPLE CHEERING.wav" type="AudioStream" id=14]
 [ext_resource path="res://Levels/construction.png" type="Texture" id=15]
@@ -24,6 +25,7 @@
 [ext_resource path="res://Music and Sounds/Cheering/100-200 PEOPLE CHEERING.wav" type="AudioStream" id=23]
 [ext_resource path="res://Music and Sounds/Cheering/20-40 PEOPLE CHEERING.wav" type="AudioStream" id=24]
 [ext_resource path="res://Levels/Test Spawn Timer.gd" type="Script" id=25]
+[ext_resource path="res://UI/UI_Get_To_The_Truck.png" type="Texture" id=26]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Node2D
@@ -41,6 +43,7 @@ onready var fanNavigationHandler = $FanNavigationHandler
 
 onready var PlayerHud = $\"UI/PlayerHUD\"
 onready var DeathMenu = $\"UI/Death Menu\"
+onready var GoToTruck = $\"UI/GoToTruck\"
 
 func _ready() -> void:
 	PlayerHud.Max_Enemies = maxNumberOfEnemies
@@ -54,7 +57,11 @@ func _on_FanNavigationHandler_new_fan_created() -> void:
 	currentNumberOfFans += 1
 	PlayerHud.Followers = currentNumberOfFans
 	if (currentNumberOfFans >= targetNumberOfFans):
-		game_won()
+		fans_target_reached()
+
+
+func fans_target_reached():
+	GoToTruck.show()
 
 func game_won():
 	print(\"you have won the game!!!!\")
@@ -1767,9 +1774,42 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 
 [sub_resource type="StyleBoxEmpty" id=131]
 
+[sub_resource type="Animation" id=132]
+resource_name = "Flashing"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("TextureRect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true, false ]
+}
+
+[sub_resource type="Animation" id=133]
+resource_name = "Duration"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
 [node name="World" type="Node2D"]
 script = SubResource( 1 )
 maxNumberOfEnemies = 5
+targetNumberOfFans = 5
 
 [node name="Navigation2D" type="Navigation2D" parent="."]
 __meta__ = {
@@ -2029,11 +2069,35 @@ stream = ExtResource( 22 )
 [node name="ExitSFX" type="AudioStreamPlayer" parent="UI/Death Menu"]
 
 [node name="GoToTruck" type="Control" parent="UI"]
-margin_right = 40.0
-margin_bottom = 40.0
+visible = false
+margin_right = 1026.0
+margin_bottom = 601.0
+script = ExtResource( 12 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="TextureRect" type="TextureRect" parent="UI/GoToTruck"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -256.0
+margin_right = 257.0
+margin_bottom = 174.0
+texture = ExtResource( 26 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/GoToTruck"]
+autoplay = "Flashing"
+playback_speed = 0.5
+anims/Flashing = SubResource( 132 )
+
+[node name="Duration" type="AnimationPlayer" parent="UI/GoToTruck"]
+playback_speed = 0.2
+anims/Duration = SubResource( 133 )
 
 [node name="Cheers" type="Node" parent="."]
 script = ExtResource( 13 )
