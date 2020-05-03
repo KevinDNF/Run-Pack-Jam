@@ -19,12 +19,13 @@ onready var softCollision = $SoftCollision
 onready var slowdownTimer = $SlowdownTimer
 onready var animationTree = $AnimationTree
 onready var animationPlayer = $AnimationPlayer
+onready var speakerPhone = $SpeakerPhone
 onready var sprite = $Sprite
 onready var animationState = animationTree.get("parameters/playback")
+var world
 
 var slowedSprite = preload("res://Enemies/Police_1_Sheet.png")
 var normalSprite = preload("res://Enemies/Police_2_Sheet.png")
-onready var speakerPhone = $SpeakerPhone
 
 onready var RadioTracks = [
 	"res://Music and Sounds/Radio/RADIO CHATTER 1.wav",
@@ -40,8 +41,9 @@ var nav : Navigation2D = null setget set_nav
 var player
 
 var direction
-#
+
 func _ready() -> void:
+	world = get_node("../../../World")
 	animationTree.active = true
 	speakerPhone.stream = load(RadioTracks[randi()%RadioTracks.size()+0])
 	speakerPhone.volume_db = -12
@@ -122,3 +124,10 @@ func _on_SlowdownTimer_timeout() -> void:
 			state = NORMAL
 			slowdownTimer.wait_time = 8
 	slowdownTimer.start()
+
+
+func _on_PlayerDetectionZone_body_entered(body: Node) -> void:
+	if world != null:
+		world.player_caught()
+	else:
+		print("World variable is null")
