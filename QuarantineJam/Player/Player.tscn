@@ -273,7 +273,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 0, 0, 0, 0 ]
+"values": [ 16, 17, 16, 17 ]
 }
 
 [sub_resource type="Animation" id=6]
@@ -574,29 +574,31 @@ position = Vector2( 0, 7 )
 
 [node name="Member_4" type="Sprite" parent="Band_Members"]
 position = Vector2( 0, -24 )
-texture = ExtResource( 1 )
+texture = ExtResource( 6 )
 vframes = 5
 hframes = 4
-frame = 16
+frame = 8
 
 [node name="Member_3" type="Sprite" parent="Band_Members"]
 position = Vector2( 8, -16 )
 texture = ExtResource( 5 )
 vframes = 5
 hframes = 4
-frame = 16
+frame = 8
 
 [node name="Member_2" type="Sprite" parent="Band_Members"]
 position = Vector2( -8, -16 )
 texture = ExtResource( 7 )
 vframes = 4
 hframes = 4
+frame = 8
 
 [node name="Member_1" type="Sprite" parent="Band_Members"]
 position = Vector2( 0, -11 )
-texture = ExtResource( 6 )
-vframes = 4
+texture = ExtResource( 1 )
+vframes = 5
 hframes = 4
+frame = 8
 
 [node name="CollisionBody" type="CollisionShape2D" parent="."]
 position = Vector2( 0.244179, 3.17425 )
