@@ -14,9 +14,9 @@ var velocity = Vector2.ZERO
 var target = null
 
 var bandMemberSprites = [
-	"res://Player/Player_1_Sheet.png",
+	"res://Player/Player_4_Sheet.png",
 	"res://Player/Player_2_Sheet.png",
-	"res://Player/Player_3_Sheet.png"
+	"res://Player/Player_5_Sheet_v2.png"
 ]
 
 onready var playerDetectionZone = $PlayerDetectionZone
