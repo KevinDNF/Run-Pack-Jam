@@ -39,10 +39,10 @@ onready var indieTracks = [
 ]
 
 onready var instrumentScenes = [
-	preload("res://Props/Guitar.tscn"),
 	preload("res://Props/SecondGuitar.tscn"),
 	preload("res://Props/BassGuitar.tscn"),
-	preload("res://Props/Drums.tscn")
+	preload("res://Props/Drums.tscn"),
+	preload("res://Props/Guitar.tscn")
 ]
 
 onready var instruments = []

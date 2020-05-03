@@ -11,6 +11,8 @@ var LEVELS = [
 
 var maxNumberOfEnemies = 0
 var targetNumberOfFans = 0
+var spawnFansInterval = 5
+var spawnPoliceInterval = 5
 
 func _ready() -> void:
 	update_level_values(STARTING_LEVEL)

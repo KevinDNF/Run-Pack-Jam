@@ -63,6 +63,8 @@ onready var LevelText = $\"UI/Level Select\"
 
 func _ready() -> void:
 	print(\"Starting level:\" + str(Config.current_level))
+	Player.connect(\"band_is_playing\", self, \"turn_on_spawns\")
+	Player.connect(\"player_is_moving\", self, \"turn_off_spawns\")
 	PlayerHud.Max_Enemies = maxNumberOfEnemies
 	PlayerHud.Max_Followers = targetNumberOfFans
 	Player.currentGenre = Config.current_level
@@ -106,6 +108,14 @@ func player_caught():
 func _on_BandTruck_player_entered_truck() -> void:
 	print(\"player entered truck\")
 	game_won()
+	
+func turn_on_spawns():
+	start_spawning_fans()
+	start_spawning_police()
+	
+func turn_off_spawns():
+	stop_spawning_fans()
+	stop_spawning_police()
 "
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
@@ -635,6 +645,10 @@ points = PoolVector2Array( 0, 16, 16, 16, 16, 64, 0, 64 )
 
 [sub_resource type="ConvexPolygonShape2D" id=94]
 points = PoolVector2Array( 0, 16, 16, 16, 16, 96, 0, 96 )
+
+[sub_resource type="NavigationPolygon" id=138]
+vertices = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 
 [sub_resource type="ConvexPolygonShape2D" id=95]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -1257,7 +1271,7 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 84/autotile/tile_size = Vector2( 16, 16 )
 84/autotile/spacing = 0
 84/autotile/occluder_map = [  ]
-84/autotile/navpoly_map = [  ]
+84/autotile/navpoly_map = [ Vector2( 1, 6 ), SubResource( 138 ) ]
 84/autotile/priority_map = [  ]
 84/autotile/z_index_map = [  ]
 84/occluder_offset = Vector2( 0, 0 )
