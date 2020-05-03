@@ -16,6 +16,6 @@ func _ready() -> void:
 
 func update_level_values(value):
 	current_level = clamp(value, 0, MAX_LEVELS)
-	maxNumberOfEnemies = 2 * (current_level + 1)
-	targetNumberOfFans = 5 * (current_level + 1)
+	maxNumberOfEnemies = 1 #2 * (current_level + 1)
+	targetNumberOfFans = 4 #5 * (current_level + 1)
 	print("Updating values...\n" + "Level: " + str(current_level + 1) + "\n" + " Max Enemies: " + str(maxNumberOfEnemies) + "\n" + " Target Fans: " + str(targetNumberOfFans) + "\n")

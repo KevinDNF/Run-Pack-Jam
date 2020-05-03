@@ -2,9 +2,9 @@
 
 [ext_resource path="res://Player/Player_1_Sheet.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.gd" type="Script" id=2]
+[ext_resource path="res://Player/Player_5_Sheet_v2.png" type="Texture" id=3]
 [ext_resource path="res://Music and Sounds/BG/Action Scenes-4.ogg" type="AudioStream" id=4]
 [ext_resource path="res://Player/Player_2_Sheet.png" type="Texture" id=5]
-[ext_resource path="res://Player/Player_4_Sheet.png" type="Texture" id=6]
 [ext_resource path="res://Player/Player_3_Sheet.png" type="Texture" id=7]
 
 [sub_resource type="CapsuleShape2D" id=1]
@@ -63,6 +63,18 @@ tracks/3/keys = {
 "update": 1,
 "values": [ 0 ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("Band_Members/Member_4:hframes")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 4 ]
+}
 
 [sub_resource type="Animation" id=3]
 resource_name = "IdleLeft"
@@ -115,6 +127,18 @@ tracks/3/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ 8 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Band_Members/Member_4:hframes")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 4 ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -169,6 +193,18 @@ tracks/3/keys = {
 "update": 1,
 "values": [ 12 ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("Band_Members/Member_4:hframes")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 4 ]
+}
 
 [sub_resource type="Animation" id=5]
 resource_name = "IdleUp"
@@ -222,6 +258,18 @@ tracks/3/keys = {
 "update": 1,
 "values": [ 4 ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("Band_Members/Member_4:hframes")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 4 ]
+}
 
 [sub_resource type="Animation" id=6]
 resource_name = "Playing"
@@ -237,7 +285,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 16, 17, 16, 17 ]
+"values": [ 8, 9, 8, 9 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Band_Members/Member_3:frame")
@@ -274,6 +322,18 @@ tracks/3/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 16, 17, 16, 17 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Band_Members/Member_4:hframes")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 2, 2, 2, 2 ]
 }
 
 [sub_resource type="Animation" id=7]
@@ -327,6 +387,16 @@ tracks/3/keys = {
 "update": 1,
 "values": [ 1, 2, 3, 0 ]
 }
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("Band_Members/Member_4:hframes")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( 4, -0.25, 0, 0.25, 0, 4, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.3 )
+}
 
 [sub_resource type="Animation" id=8]
 length = 0.3
@@ -378,6 +448,16 @@ tracks/3/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 9, 10, 11, 8 ]
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("Band_Members/Member_4:hframes")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( 4, -0.25, 0, 0.25, 0, 4, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.3 )
 }
 
 [sub_resource type="Animation" id=9]
@@ -431,6 +511,16 @@ tracks/3/keys = {
 "update": 1,
 "values": [ 13, 14, 15, 12 ]
 }
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("Band_Members/Member_4:hframes")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( 4, -0.25, 0, 0.25, 0, 4, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.3 )
+}
 
 [sub_resource type="Animation" id=10]
 length = 0.3
@@ -482,6 +572,16 @@ tracks/3/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 5, 6, 7, 4 ]
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("Band_Members/Member_4:hframes")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( 4, -0.25, 0, 0.25, 0, 4, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.3 )
 }
 
 [sub_resource type="AnimationNodeAnimation" id=11]
@@ -570,31 +670,27 @@ position = Vector2( 0, 7 )
 
 [node name="Member_4" type="Sprite" parent="Band_Members"]
 position = Vector2( 0, -24 )
-texture = ExtResource( 6 )
-vframes = 5
-hframes = 4
-frame = 8
+texture = ExtResource( 3 )
+vframes = 6
+hframes = 2
 
 [node name="Member_3" type="Sprite" parent="Band_Members"]
 position = Vector2( 8, -16 )
 texture = ExtResource( 5 )
-vframes = 5
+vframes = 12
 hframes = 4
-frame = 8
 
 [node name="Member_2" type="Sprite" parent="Band_Members"]
 position = Vector2( -8, -16 )
 texture = ExtResource( 7 )
 vframes = 4
 hframes = 4
-frame = 8
 
 [node name="Member_1" type="Sprite" parent="Band_Members"]
 position = Vector2( 0, -11 )
 texture = ExtResource( 1 )
-vframes = 5
+vframes = 12
 hframes = 4
-frame = 8
 
 [node name="CollisionBody" type="CollisionShape2D" parent="."]
 position = Vector2( 0.244179, 3.17425 )
@@ -617,8 +713,8 @@ tree_root = SubResource( 26 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/playback = SubResource( 27 )
-parameters/Idle/blend_position = Vector2( -0.131996, -0.11672 )
-parameters/Run/blend_position = Vector2( 0.00527978, -0.00549996 )
+parameters/Idle/blend_position = Vector2( 0.083004, 0.297763 )
+parameters/Run/blend_position = Vector2( -0.15415, -0.292841 )
 
 [node name="Band_Music" type="AudioStreamPlayer" parent="."]
 

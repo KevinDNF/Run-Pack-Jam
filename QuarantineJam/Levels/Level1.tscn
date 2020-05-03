@@ -1775,23 +1775,7 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 16/shapes = [  ]
 16/z_index = 0
 
-[sub_resource type="StyleBoxEmpty" id=124]
-
-[sub_resource type="StyleBoxEmpty" id=125]
-
-[sub_resource type="StyleBoxEmpty" id=126]
-
-[sub_resource type="StyleBoxEmpty" id=127]
-
-[sub_resource type="StyleBoxEmpty" id=128]
-
-[sub_resource type="StyleBoxEmpty" id=129]
-
-[sub_resource type="StyleBoxEmpty" id=130]
-
-[sub_resource type="StyleBoxEmpty" id=131]
-
-[sub_resource type="Animation" id=132]
+[sub_resource type="Animation" id=124]
 resource_name = "Flashing"
 length = 0.6
 loop = true
@@ -1808,7 +1792,7 @@ tracks/0/keys = {
 "values": [ true, false, true, false ]
 }
 
-[sub_resource type="Animation" id=133]
+[sub_resource type="Animation" id=125]
 resource_name = "Duration"
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:visible")
@@ -1822,6 +1806,22 @@ tracks/0/keys = {
 "update": 1,
 "values": [ false ]
 }
+
+[sub_resource type="StyleBoxEmpty" id=126]
+
+[sub_resource type="StyleBoxEmpty" id=127]
+
+[sub_resource type="StyleBoxEmpty" id=128]
+
+[sub_resource type="StyleBoxEmpty" id=129]
+
+[sub_resource type="StyleBoxEmpty" id=130]
+
+[sub_resource type="StyleBoxEmpty" id=131]
+
+[sub_resource type="StyleBoxEmpty" id=132]
+
+[sub_resource type="StyleBoxEmpty" id=133]
 
 [sub_resource type="StyleBoxEmpty" id=134]
 
@@ -1965,80 +1965,37 @@ vframes = 2
 hframes = 6
 frame = 6
 
-[node name="Pause Menu" type="Control" parent="UI"]
+[node name="GoToTruck" type="Control" parent="UI"]
 pause_mode = 2
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 10 )
+script = ExtResource( 12 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ColorRect" type="ColorRect" parent="UI/Pause Menu"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -4263.42
-margin_top = -2558.15
-margin_right = 4255.58
-margin_bottom = 2571.85
-color = Color( 0, 0, 0, 0.427451 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureRect" type="TextureRect" parent="UI/Pause Menu"]
+[node name="TextureRect" type="TextureRect" parent="UI/GoToTruck"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -361.5
-margin_right = 361.5
-margin_bottom = 567.0
-texture = ExtResource( 5 )
+margin_left = -256.0
+margin_right = 257.0
+margin_bottom = 174.0
+texture = ExtResource( 26 )
 expand = true
-stretch_mode = 6
+stretch_mode = 5
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Continue_Btn" type="Button" parent="UI/Pause Menu"]
-light_mask = 0
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -119.0
-margin_top = 288.0
-margin_right = 237.0
-margin_bottom = 391.0
-custom_styles/hover = ExtResource( 11 )
-custom_styles/pressed = SubResource( 124 )
-custom_styles/focus = SubResource( 125 )
-custom_styles/disabled = SubResource( 126 )
-custom_styles/normal = SubResource( 127 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/GoToTruck"]
+autoplay = "Flashing"
+playback_speed = 0.5
+anims/Flashing = SubResource( 124 )
 
-[node name="Quit_Btn" type="Button" parent="UI/Pause Menu"]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -115.0
-margin_top = 417.0
-margin_right = 231.0
-margin_bottom = 512.0
-custom_styles/hover = ExtResource( 11 )
-custom_styles/pressed = SubResource( 128 )
-custom_styles/focus = SubResource( 129 )
-custom_styles/disabled = SubResource( 130 )
-custom_styles/normal = SubResource( 131 )
-
-[node name="MenuMusic" type="AudioStreamPlayer" parent="UI/Pause Menu"]
-stream = ExtResource( 4 )
-
-[node name="ContinueSFX" type="AudioStreamPlayer" parent="UI/Pause Menu"]
-stream = ExtResource( 22 )
-
-[node name="ExitSFX" type="AudioStreamPlayer" parent="UI/Pause Menu"]
+[node name="Duration" type="AnimationPlayer" parent="UI/GoToTruck"]
+playback_speed = 0.2
+anims/Duration = SubResource( 125 )
 
 [node name="Death Menu" type="Control" parent="UI"]
 pause_mode = 2
@@ -2086,10 +2043,10 @@ margin_top = 410.0
 margin_right = 203.0
 margin_bottom = 473.0
 custom_styles/hover = ExtResource( 11 )
-custom_styles/pressed = SubResource( 124 )
-custom_styles/focus = SubResource( 125 )
-custom_styles/disabled = SubResource( 126 )
-custom_styles/normal = SubResource( 127 )
+custom_styles/pressed = SubResource( 126 )
+custom_styles/focus = SubResource( 127 )
+custom_styles/disabled = SubResource( 128 )
+custom_styles/normal = SubResource( 129 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -2100,38 +2057,6 @@ __meta__ = {
 stream = ExtResource( 22 )
 
 [node name="ExitSFX" type="AudioStreamPlayer" parent="UI/Death Menu"]
-
-[node name="GoToTruck" type="Control" parent="UI"]
-pause_mode = 2
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-script = ExtResource( 12 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureRect" type="TextureRect" parent="UI/GoToTruck"]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -256.0
-margin_right = 257.0
-margin_bottom = 174.0
-texture = ExtResource( 26 )
-expand = true
-stretch_mode = 5
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/GoToTruck"]
-autoplay = "Flashing"
-playback_speed = 0.5
-anims/Flashing = SubResource( 132 )
-
-[node name="Duration" type="AnimationPlayer" parent="UI/GoToTruck"]
-playback_speed = 0.2
-anims/Duration = SubResource( 133 )
 
 [node name="Next Level Screen" type="Control" parent="UI"]
 pause_mode = 2
@@ -2178,10 +2103,10 @@ margin_top = 399.432
 margin_right = 194.279
 margin_bottom = 468.432
 custom_styles/hover = ExtResource( 11 )
-custom_styles/pressed = SubResource( 134 )
-custom_styles/focus = SubResource( 135 )
-custom_styles/disabled = SubResource( 136 )
-custom_styles/normal = SubResource( 137 )
+custom_styles/pressed = SubResource( 130 )
+custom_styles/focus = SubResource( 131 )
+custom_styles/disabled = SubResource( 132 )
+custom_styles/normal = SubResource( 133 )
 
 [node name="ContinueSFX" type="AudioStreamPlayer" parent="UI/Next Level Screen"]
 stream = ExtResource( 22 )
@@ -2233,16 +2158,91 @@ margin_top = 391.0
 margin_right = 220.0
 margin_bottom = 460.0
 custom_styles/hover = ExtResource( 11 )
-custom_styles/pressed = SubResource( 134 )
-custom_styles/focus = SubResource( 135 )
-custom_styles/disabled = SubResource( 136 )
-custom_styles/normal = SubResource( 137 )
+custom_styles/pressed = SubResource( 130 )
+custom_styles/focus = SubResource( 131 )
+custom_styles/disabled = SubResource( 132 )
+custom_styles/normal = SubResource( 133 )
 
 [node name="ContinueSFX" type="AudioStreamPlayer" parent="UI/Win Screen"]
 stream = ExtResource( 22 )
 
 [node name="MenuMusic" type="AudioStreamPlayer" parent="UI/Win Screen"]
 stream = ExtResource( 4 )
+
+[node name="Pause Menu" type="Control" parent="UI"]
+pause_mode = 2
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="UI/Pause Menu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -4263.42
+margin_top = -2558.15
+margin_right = 4255.58
+margin_bottom = 2571.85
+color = Color( 0, 0, 0, 0.427451 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="UI/Pause Menu"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -361.5
+margin_right = 361.5
+margin_bottom = 567.0
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Continue_Btn" type="Button" parent="UI/Pause Menu"]
+light_mask = 0
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -119.0
+margin_top = 288.0
+margin_right = 237.0
+margin_bottom = 391.0
+custom_styles/hover = ExtResource( 11 )
+custom_styles/pressed = SubResource( 126 )
+custom_styles/focus = SubResource( 127 )
+custom_styles/disabled = SubResource( 128 )
+custom_styles/normal = SubResource( 129 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Quit_Btn" type="Button" parent="UI/Pause Menu"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -115.0
+margin_top = 417.0
+margin_right = 231.0
+margin_bottom = 512.0
+custom_styles/hover = ExtResource( 11 )
+custom_styles/pressed = SubResource( 134 )
+custom_styles/focus = SubResource( 135 )
+custom_styles/disabled = SubResource( 136 )
+custom_styles/normal = SubResource( 137 )
+
+[node name="MenuMusic" type="AudioStreamPlayer" parent="UI/Pause Menu"]
+stream = ExtResource( 4 )
+
+[node name="ContinueSFX" type="AudioStreamPlayer" parent="UI/Pause Menu"]
+stream = ExtResource( 22 )
+
+[node name="ExitSFX" type="AudioStreamPlayer" parent="UI/Pause Menu"]
 
 [node name="Cheers" type="Node" parent="."]
 script = ExtResource( 13 )
@@ -2263,11 +2263,11 @@ script = ExtResource( 25 )
 [connection signal="player_entered_truck" from="Elements/BandTruck" to="." method="_on_BandTruck_player_entered_truck"]
 [connection signal="new_policeman_created" from="EnemyNavigationHandler" to="." method="_on_EnemyNavigationHandler_new_policeman_created"]
 [connection signal="new_fan_created" from="FanNavigationHandler" to="." method="_on_FanNavigationHandler_new_fan_created"]
-[connection signal="button_up" from="UI/Pause Menu/Continue_Btn" to="UI/Pause Menu" method="_on_Continue_Btn_button_up"]
-[connection signal="button_up" from="UI/Pause Menu/Quit_Btn" to="UI/Pause Menu" method="_on_Quit_Btn_button_up"]
 [connection signal="button_up" from="UI/Death Menu/TryAgain_Btn" to="UI/Death Menu" method="_on_Continue_Btn_button_up"]
 [connection signal="button_up" from="UI/Next Level Screen/Button" to="UI/Next Level Screen" method="_on_Button_button_up"]
 [connection signal="button_up" from="UI/Win Screen/Button" to="UI/Win Screen" method="_on_Button_button_up"]
+[connection signal="button_up" from="UI/Pause Menu/Continue_Btn" to="UI/Pause Menu" method="_on_Continue_Btn_button_up"]
+[connection signal="button_up" from="UI/Pause Menu/Quit_Btn" to="UI/Pause Menu" method="_on_Quit_Btn_button_up"]
 [connection signal="timeout" from="Test Spawn Timer" to="Test Spawn Timer" method="_on_Test_Spawn_Timer_timeout"]
 
 [editable path="EnemyNavigationHandler"]
