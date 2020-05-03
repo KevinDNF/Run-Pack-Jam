@@ -214,6 +214,9 @@ parameters/Idle/blend_position = Vector2( 0, 0 )
 parameters/Run/blend_position = Vector2( 0.00172913, 1.17021 )
 
 [node name="SpeakerPhone" type="AudioStreamPlayer" parent="."]
+[connection signal="body_entered" from="PlayerDetectionZone" to="." method="_on_PlayerDetectionZone_body_entered"]
 [connection signal="timeout" from="SlowdownTimer" to="." method="_on_SlowdownTimer_timeout"]
+
+[editable path="PlayerDetectionZone"]
 
 [editable path="SoftCollision"]

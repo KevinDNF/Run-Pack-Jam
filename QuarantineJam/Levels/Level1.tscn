@@ -34,10 +34,13 @@ var currentNumberOfEnemies = 0
 export var targetNumberOfFans = 20
 var currentNumberOfFans = 0 
 
+var player_caught
+
 onready var enemyNavigationHandler = $EnemyNavigationHandler
 onready var fanNavigationHandler = $FanNavigationHandler
 
 onready var PlayerHud = $\"UI/PlayerHUD\"
+onready var DeathMenu = $\"UI/Death Menu\"
 
 func _ready() -> void:
 	PlayerHud.Max_Enemies = maxNumberOfEnemies
@@ -68,6 +71,11 @@ func start_spawning_fans():
 	
 func stop_spawning_fans():
 	fanNavigationHandler.disable_spawn_timer()
+	
+func player_caught():
+	if player_caught != true:
+		player_caught = true
+		DeathMenu.show_menu()
 "
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
