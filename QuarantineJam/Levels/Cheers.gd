@@ -11,7 +11,7 @@ onready var cheerClips = [
 ]
 
 func _ready() -> void:
-	player = get_node("../../World/Player")
+	player = get_node("../../World/Humans/Player")
 	world = get_node("../../World")
 	playerHud = get_node("../../World/UI/PlayerHUD")
 	player.connect("band_is_playing", self, "turn_on_crowd_cheering")

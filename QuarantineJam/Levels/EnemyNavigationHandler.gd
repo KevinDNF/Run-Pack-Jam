@@ -7,12 +7,13 @@ var world
 onready var spawn_position = $SpawnPosition.global_position
 onready var line2d = $Line2D
 onready var spawnTimer = $PoliceSpawnTimer
+onready var humanTreeNode = $"../Humans"
 
 signal new_policeman_created
 
 func _ready() -> void:
 	world = get_node("../../World")
-	player = get_node("../../World/Player")
+	player = get_node("../../World/Humans/Player")
 	nav = get_node("../../World/Navigation2D")
 	spawnTimer.stop()
 
@@ -20,7 +21,7 @@ func _ready() -> void:
 func _on_PoliceSpawnTimer_timeout() -> void:
 	if world.currentNumberOfEnemies < world.maxNumberOfEnemies:
 		var new_policeman = policeman_prefab.instance()
-		add_child(new_policeman)
+		humanTreeNode.add_child(new_policeman)
 		new_policeman.global_position = spawn_position
 		new_policeman.nav = nav
 		new_policeman.player = player

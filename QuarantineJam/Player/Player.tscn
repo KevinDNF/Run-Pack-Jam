@@ -501,11 +501,13 @@ start_node = "Idle"
 [sub_resource type="AnimationNodeStateMachinePlayback" id=23]
 
 [node name="Player" type="KinematicBody2D"]
+position = Vector2( 0, 0.066412 )
+scale = Vector2( 0.8, 0.8 )
 collision_mask = 4
 script = ExtResource( 2 )
 
 [node name="Band_Members" type="YSort" parent="."]
-position = Vector2( 0, -1 )
+position = Vector2( 0, 7 )
 
 [node name="Member_4" type="Sprite" parent="Band_Members"]
 position = Vector2( 0, -24 )
@@ -536,7 +538,7 @@ hframes = 4
 frame = 8
 
 [node name="CollisionBody" type="CollisionShape2D" parent="."]
-position = Vector2( 0.244179, -4.82575 )
+position = Vector2( 0.244179, 3.17425 )
 rotation = 1.5708
 shape = SubResource( 1 )
 

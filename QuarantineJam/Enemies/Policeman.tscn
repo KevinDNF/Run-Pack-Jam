@@ -162,28 +162,31 @@ start_node = "Idle"
 [sub_resource type="AnimationNodeStateMachinePlayback" id=21]
 
 [node name="Policeman" type="KinematicBody2D"]
+scale = Vector2( 0.9, 0.9 )
 collision_layer = 2
 collision_mask = 4
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, -3 )
 texture = ExtResource( 1 )
 vframes = 4
 hframes = 4
 frame = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0.0641518, 11.8571 )
+position = Vector2( 0.0641518, 8.8571 )
 rotation = 1.5708
 shape = SubResource( 1 )
 
 [node name="PlayerDetectionZone" parent="." instance=ExtResource( 3 )]
-position = Vector2( 0.172333, -0.932518 )
+position = Vector2( 0.172333, -3.93252 )
 
 [node name="Line2D" type="Line2D" parent="."]
 visible = false
 
 [node name="SoftCollision" parent="." instance=ExtResource( 4 )]
+position = Vector2( 0, -3 )
 collision_layer = 64
 collision_mask = 64
 
