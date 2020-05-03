@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Radio8.wav-8cd67b722a3099849a7a887c4414bd03.sample"
+
+[deps]
+
+source_file="res://Music and Sounds/Radio/Radio8.wav"
+dest_files=[ "res://.import/Radio8.wav-8cd67b722a3099849a7a887c4414bd03.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
