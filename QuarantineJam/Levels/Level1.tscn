@@ -1,4 +1,4 @@
-[gd_scene load_steps=160 format=2]
+[gd_scene load_steps=161 format=2]
 
 [ext_resource path="res://Levels/city_tile_set.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
@@ -26,6 +26,7 @@
 [ext_resource path="res://Music and Sounds/Cheering/20-40 PEOPLE CHEERING.wav" type="AudioStream" id=24]
 [ext_resource path="res://Levels/Test Spawn Timer.gd" type="Script" id=25]
 [ext_resource path="res://UI/UI_Get_To_The_Truck.png" type="Texture" id=26]
+[ext_resource path="res://Band/BandMemberNavigationHandler.tscn" type="PackedScene" id=27]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Node2D
@@ -1809,7 +1810,7 @@ tracks/0/keys = {
 [node name="World" type="Node2D"]
 script = SubResource( 1 )
 maxNumberOfEnemies = 5
-targetNumberOfFans = 5
+targetNumberOfFans = 10
 
 [node name="Navigation2D" type="Navigation2D" parent="."]
 __meta__ = {
@@ -1849,6 +1850,7 @@ tile_data = PoolIntArray( 2031624, 5, 0, 2031635, 5, 0, 2359310, 6, 0, 2359321, 
 position = Vector2( 120, 440 )
 ACCELERATION = 800
 MAX_SPEED = 100
+Active_Band_Members = 1
 currentGenre = 4
 
 [node name="Camera Rotation" type="Position2D" parent="Humans/Player"]
@@ -1881,6 +1883,11 @@ wait_time = 5.0
 
 [node name="Line2D" parent="EnemyNavigationHandler" index="2"]
 visible = true
+
+[node name="BandMemberNavigationHandler" parent="." instance=ExtResource( 27 )]
+
+[node name="SpawnPosition" parent="BandMemberNavigationHandler" index="0"]
+position = Vector2( 260.64, 82.2646 )
 
 [node name="FanNavigationHandler" parent="." instance=ExtResource( 21 )]
 
@@ -2123,5 +2130,7 @@ script = ExtResource( 25 )
 [connection signal="timeout" from="Test Spawn Timer" to="Test Spawn Timer" method="_on_Test_Spawn_Timer_timeout"]
 
 [editable path="EnemyNavigationHandler"]
+
+[editable path="BandMemberNavigationHandler"]
 
 [editable path="FanNavigationHandler"]
