@@ -16,6 +16,7 @@ func _ready() -> void:
 	player = get_node("../../World/Elements/Player")
 	nav = get_node("../../World/Navigation2D")
 	spawnTimer.stop()
+	spawnTimer.wait_time = Config.spawnPoliceInterval
 
 ## Allows us to spawn police at set intervals
 func _on_PoliceSpawnTimer_timeout() -> void:

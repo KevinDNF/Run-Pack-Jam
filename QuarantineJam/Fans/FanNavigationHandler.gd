@@ -15,6 +15,7 @@ func _ready() -> void:
 	player = get_node("../../World/Elements/Player")
 	nav = get_node("../../World/Navigation2D")
 	spawnTimer.stop()
+	spawnTimer.wait_time = Config.spawnFansInterval
 	
 func _on_FanSpawnTimer_timeout() -> void:
 	if world.currentNumberOfFans < world.targetNumberOfFans:
