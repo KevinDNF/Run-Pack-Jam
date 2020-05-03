@@ -71,15 +71,30 @@ var numberOfHeldInstruments = 1
 var velocity = Vector2.ZERO
 var direction_vector = Vector2.LEFT #Store direction for non movement animations
 
-onready var animationTree = $AnimationTree
-onready var animationPlayer = $AnimationPlayer
-onready var animationState = animationTree.get("parameters/playback")
+onready var animationTree1 = $p1ANPlayer
+onready var animationPlayer1 = $p1APlayer
+onready var animationState1 = animationTree1.get("parameters/playback")
+
+onready var animationTree2 = $p1ANPlayer2
+onready var animationPlayer2 = $p1APlayer2
+onready var animationState2 = animationTree2.get("parameters/playback")
+
+onready var animationTree3 = $p1ANPlayer3
+onready var animationPlayer3 = $p1APlayer3
+onready var animationState3 = animationTree3.get("parameters/playback")
+
+onready var animationTree4 = $p1ANPlayer4
+onready var animationPlayer4 = $p1APlayer4
+onready var animationState4 = animationTree4.get("parameters/playback")
 
 signal player_is_moving
 signal band_is_playing
 
 func _ready() -> void:
-	animationTree.active = true
+	animationTree1.active = true
+	animationTree2.active = true
+	animationTree3.active = true
+	animationTree4.active = true
 	updateActiveBandMembers(Active_Band_Members)
 	
 func _physics_process(delta: float) -> void:
@@ -107,22 +122,105 @@ func move_state(delta: float):
 	
 	if input_vector != Vector2.ZERO:
 		direction_vector = input_vector
-		animationTree.set("parameters/Idle/blend_position", input_vector)
-		animationTree.set("parameters/Run/blend_position", input_vector)
-		animationState.travel("Run")
+		animationTree1.set("parameters/Idle/blend_position", input_vector)
+		animationTree1.set("parameters/Run/blend_position", input_vector)
+		animationTree1.set("parameters/GuitarIdle/blend_position", input_vector)
+		animationTree1.set("parameters/GuitarRunning/blend_position", input_vector)
+		
+		animationTree2.set("parameters/Idle/blend_position", input_vector)
+		animationTree2.set("parameters/Run/blend_position", input_vector)
+		animationTree2.set("parameters/GuitarIdle/blend_position", input_vector)
+		animationTree2.set("parameters/GuitarRunning/blend_position", input_vector)
+		
+		animationTree3.set("parameters/Idle/blend_position", input_vector)
+		animationTree3.set("parameters/Run/blend_position", input_vector)
+		animationTree3.set("parameters/GuitarIdle/blend_position", input_vector)
+		animationTree3.set("parameters/GuitarRunning/blend_position", input_vector)
+		
+		animationTree4.set("parameters/Idle/blend_position", input_vector)
+		animationTree4.set("parameters/Run/blend_position", input_vector)
+		animationTree4.set("parameters/GuitarIdle/blend_position", input_vector)
+		animationTree4.set("parameters/GuitarRunning/blend_position", input_vector)
+		
+		if instrumentsAtHand[0]:
+			animationState1.travel("GuitarRunning")
+		else:
+			animationState1.travel("Run")
+			
+		if instrumentsAtHand[1]:
+			animationState2.travel("GuitarRunning")
+		else:
+			animationState2.travel("Run")
+			
+		if instrumentsAtHand[2]:
+			animationState3.travel("GuitarRunning")
+		else:
+			animationState3.travel("Run")
+			
+		if instrumentsAtHand[3]:
+			animationState4.travel("GuitarRunning")
+		else:
+			animationState4.travel("Run")
+
 		velocity = velocity.move_toward(input_vector * MAX_SPEED, ACCELERATION * delta)
 	else:
-		animationState.travel("Idle")
+		animationState1.travel("Idle")
+		animationState2.travel("Idle")
+		animationState3.travel("Idle")
+		animationState4.travel("Idle")
+		
+		
+		if instrumentsAtHand[0]:
+			animationState1.travel("GuitarIdle")
+		else:
+			animationState1.travel("Idle")
+			
+		if instrumentsAtHand[1]:
+			animationState2.travel("GuitarIdle")
+		else:
+			animationState2.travel("Idle")
+			
+		if instrumentsAtHand[2]:
+			animationState3.travel("GuitarIdle")
+		else:
+			animationState3.travel("Idle")
+			
+		if instrumentsAtHand[3]:
+			animationState4.travel("GuitarIdle")
+		else:
+			animationState4.travel("Idle")
+		
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 	
 	move()
 	
-	if Input.is_action_just_pressed("band_playing") and holding_all_instruments():
-		animationTree.set("parameters/Idle/blend_position", Vector2.DOWN)
-		animationTree.set("parameters/Run/blend_position",  Vector2.DOWN)
+	if Input.is_action_just_pressed("band_playing") and holding_all_instruments():		
+		animationTree1.set("parameters/Idle/blend_position", Vector2.DOWN)
+		animationTree1.set("parameters/Run/blend_position", Vector2.DOWN)
+		animationTree1.set("parameters/GuitarIdle/blend_position", Vector2.DOWN)
+		animationTree1.set("parameters/GuitarRunning/blend_position", Vector2.DOWN)
+		
+		animationTree2.set("parameters/Idle/blend_position", Vector2.DOWN)
+		animationTree2.set("parameters/Run/blend_position", Vector2.DOWN)
+		animationTree2.set("parameters/GuitarIdle/blend_position", Vector2.DOWN)
+		animationTree2.set("parameters/GuitarRunning/blend_position", Vector2.DOWN)
+		
+		animationTree3.set("parameters/Idle/blend_position", Vector2.DOWN)
+		animationTree3.set("parameters/Run/blend_position", Vector2.DOWN)
+		animationTree3.set("parameters/GuitarIdle/blend_position", Vector2.DOWN)
+		animationTree3.set("parameters/GuitarRunning/blend_position", Vector2.DOWN)
+		
+		animationTree4.set("parameters/Idle/blend_position", Vector2.DOWN)
+		animationTree4.set("parameters/Run/blend_position", Vector2.DOWN)
+		animationTree4.set("parameters/GuitarIdle/blend_position", Vector2.DOWN)
+		animationTree4.set("parameters/GuitarRunning/blend_position", Vector2.DOWN)
+		
 		Band_Music.play(seek_position)
 		Running_Music.stop()
-		animationState.travel("Playing")
+		animationState1.travel("Playing")
+		animationState2.travel("Playing")
+		animationState3.travel("Playing")
+		animationState4.travel("Playing")
 		toggleBandPlaying()
 	
 func move():
