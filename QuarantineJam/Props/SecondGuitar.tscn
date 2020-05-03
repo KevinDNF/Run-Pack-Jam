@@ -18,7 +18,7 @@ collision_layer = 128
 collision_mask = 128
 script = ExtResource( 3 )
 
-[node name="GuitarCollider" type="CollisionShape2D" parent="."]
+[node name="Collider" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -32,6 +32,8 @@ collision_mask = 128
 shape = SubResource( 2 )
 
 [node name="PickupRadius" type="Area2D" parent="."]
+collision_layer = 256
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PickupRadius"]
 shape = SubResource( 3 )

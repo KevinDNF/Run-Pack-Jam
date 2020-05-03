@@ -48,7 +48,7 @@ onready var instrumentScenes = [
 onready var instruments = []
 
 var instrumentsAtHand = [
-	false,
+	true,
 	false,
 	false,
 	false
@@ -117,7 +117,7 @@ func move_state(delta: float):
 	
 	move()
 	
-	if Input.is_action_just_pressed("band_playing"):
+	if Input.is_action_just_pressed("band_playing") and get_number_of_held_instruments() == Active_Band_Members:
 		animationTree.set("parameters/Idle/blend_position", Vector2.DOWN)
 		animationTree.set("parameters/Run/blend_position",  Vector2.DOWN)
 		Band_Music.play(seek_position)
@@ -175,10 +175,21 @@ func drop_all_instruments():
 	var a = instruments
 	for i in range(0, Active_Band_Members):
 		get_node("/root/World/Elements").add_child(instruments[i])
-		instruments[i].global_position = global_position
+		var dropOffset = Vector2(30, 30)
+		var dropPosition = global_position + dropOffset
+		instruments[i].global_position = dropPosition
 		instrumentsAtHand[i] = false
 
 func pickup_instrument(id):
 	instruments[id].get_parent().remove_child(instruments[id])
 	instrumentsAtHand[id] = true
 	
+func get_number_of_held_instruments():
+	var numberOfInstrumentsAtHand = 0
+	for i in instrumentsAtHand:
+		if i == true:
+			numberOfInstrumentsAtHand += 1
+	return numberOfInstrumentsAtHand
+
+func _on_IntrumentPickupRadius_body_entered(body: Node) -> void:
+	pickup_instrument(body.id)
