@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Menus/Main Menu.gd" type="Script" id=1]
+
+[node name="Main Menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -1.43198
+margin_bottom = -1.43201
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Play" type="Button" parent="."]
+margin_left = 242.472
+margin_top = 170.895
+margin_right = 811.472
+margin_bottom = 400.895
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="button_up" from="Play" to="." method="_on_Button_button_up"]

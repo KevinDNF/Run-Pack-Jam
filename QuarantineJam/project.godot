@@ -16,8 +16,12 @@ _global_script_class_icons={
 [application]
 
 config/name="QuarantineJam"
-run/main_scene="res://Levels/Level1.tscn"
+run/main_scene="res://Menus/Main Menu.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+Config="*res://config.gd"
 
 [importer_defaults]
 

@@ -577,14 +577,14 @@ position = Vector2( 0, -24 )
 texture = ExtResource( 1 )
 vframes = 5
 hframes = 4
-frame = 17
+frame = 16
 
 [node name="Member_3" type="Sprite" parent="Band_Members"]
 position = Vector2( 8, -16 )
 texture = ExtResource( 5 )
 vframes = 5
 hframes = 4
-frame = 17
+frame = 16
 
 [node name="Member_2" type="Sprite" parent="Band_Members"]
 position = Vector2( -8, -16 )
