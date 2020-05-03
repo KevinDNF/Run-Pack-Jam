@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Punk (All Instruments).ogg-8f46f2467c0edb327be1a245ebe38654.oggstr"
+
+[deps]
+
+source_file="res://Music and Sounds/Punk/Punk (All Instruments).ogg"
+dest_files=[ "res://.import/Punk (All Instruments).ogg-8f46f2467c0edb327be1a245ebe38654.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

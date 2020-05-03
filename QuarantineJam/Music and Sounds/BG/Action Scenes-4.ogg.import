@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Action Scenes-4.ogg-32faf02407ad56d7dc1314f629aa52b2.oggstr"
+
+[deps]
+
+source_file="res://Music and Sounds/BG/Action Scenes-4.ogg"
+dest_files=[ "res://.import/Action Scenes-4.ogg-32faf02407ad56d7dc1314f629aa52b2.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
