@@ -11,7 +11,5 @@ func toggle_pause():
 	get_tree().paused = not get_tree().paused
 
 func _on_Button_button_up() -> void:
-	ContinueSFX.play()
-	$MenuMusic.stop()
-	toggle_pause()
+	get_tree().reload_current_scene()
 	#add reset level logic

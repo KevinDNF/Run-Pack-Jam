@@ -15,3 +15,4 @@ func _on_Button_button_up() -> void:
 	$MenuMusic.stop()
 	toggle_pause()
 	#add reset level logic
+	get_tree().reload_current_scene()

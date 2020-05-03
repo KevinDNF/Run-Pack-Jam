@@ -18,3 +18,4 @@ func _on_Continue_Btn_button_up() -> void:
 	#Singnal world
 	get_tree().paused = false
 	self.visible = false
+	get_tree().reload_current_scene()
