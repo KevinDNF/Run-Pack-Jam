@@ -1784,6 +1784,7 @@ position = Vector2( 120, 440 )
 scale = Vector2( 0.8, 0.8 )
 ACCELERATION = 800
 MAX_SPEED = 100
+Active_Band_Members = 4
 
 [node name="Camera Rotation" type="Position2D" parent="Player"]
 script = ExtResource( 6 )
