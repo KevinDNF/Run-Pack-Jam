@@ -11,13 +11,13 @@ var threeQuartersFansReached  = false
 var allFansReached = false
 
 onready var spawn_position = $SpawnPosition.global_position
-onready var humanTreeNode = $"../Humans"
+onready var humanTreeNode = $"../Elements"
 onready var fanNavigationHandler = $"../FanNavigationHandler"
 onready var playerHud = $"../../World/UI/PlayerHUD"
 
 func _ready() -> void:
 	world = get_node("../../World")
-	player = get_node("../../World/Humans/Player")
+	player = get_node("../../World/Elements/Player")
 	nav = get_node("../../World/Navigation2D")
 	fanNavigationHandler.connect("new_fan_created", self, "_on_new_fan_created")
 	

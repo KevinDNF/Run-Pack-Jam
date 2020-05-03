@@ -1,4 +1,4 @@
-[gd_scene load_steps=169 format=2]
+[gd_scene load_steps=170 format=2]
 
 [ext_resource path="res://Levels/city_tile_set.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
@@ -1908,7 +1908,7 @@ wait_time = 5.0
 [node name="Line2D" parent="EnemyNavigationHandler" index="2"]
 visible = true
 
-[node name="BandMemberNavigationHandler" parent="." instance=ExtResource( 27 )]
+[node name="BandMemberNavigationHandler" parent="." instance=ExtResource( 32 )]
 
 [node name="SpawnPosition" parent="BandMemberNavigationHandler" index="0"]
 position = Vector2( 260.64, 82.2646 )
