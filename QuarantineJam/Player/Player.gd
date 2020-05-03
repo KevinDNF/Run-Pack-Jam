@@ -76,7 +76,6 @@ func _physics_process(delta: float) -> void:
 			band_playing_state(delta)
 
 func band_playing_state(delta: float):
-	animationState.travel("Idle")
 	velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 	
 	if Input.is_action_just_pressed("band_playing"):
@@ -108,6 +107,7 @@ func move_state(delta: float):
 		animationTree.set("parameters/Run/blend_position",  Vector2.DOWN)
 		Band_Music.play(seek_position)
 		Running_Music.stop()
+		animationState.travel("Playing")
 		toggleBandPlaying()
 	
 func move():
