@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://Player/Player_1_Sheet.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.gd" type="Script" id=2]
@@ -657,6 +657,9 @@ start_node = "Idle"
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=27]
 
+[sub_resource type="CircleShape2D" id=28]
+radius = 27.6882
+
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 0, 0.066412 )
 scale = Vector2( 0.8, 0.8 )
@@ -721,3 +724,12 @@ parameters/Run/blend_position = Vector2( -0.15415, -0.292841 )
 [node name="Running_Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
 autoplay = true
+
+[node name="IntrumentPickupRadius" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="IntrumentPickupRadius"]
+position = Vector2( 0, -9.90555 )
+shape = SubResource( 28 )
+[connection signal="body_entered" from="IntrumentPickupRadius" to="." method="_on_IntrumentPickupRadius_body_entered"]

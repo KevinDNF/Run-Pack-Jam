@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 onready var softCollision = $SoftCollision
+onready var pickupRadiusCollider = $PickupRadius/CollisionShape2D
 var velocity = Vector2.ZERO
 var id = 0
 
