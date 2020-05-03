@@ -15,11 +15,12 @@ radius = 15.0
 
 [node name="SecondGuitar" type="KinematicBody2D"]
 collision_layer = 128
-collision_mask = 128
+collision_mask = 133
 script = ExtResource( 3 )
 
 [node name="Collider" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
+disabled = true
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
@@ -30,12 +31,18 @@ collision_mask = 128
 
 [node name="CollisionShape2D" parent="SoftCollision" index="0"]
 shape = SubResource( 2 )
+disabled = true
 
-[node name="PickupRadius" type="Area2D" parent="."]
-collision_layer = 256
-collision_mask = 0
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupRadius"]
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource( 3 )
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 
 [editable path="SoftCollision"]

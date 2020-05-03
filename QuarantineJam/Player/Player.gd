@@ -278,7 +278,8 @@ func drop_all_instruments():
 		get_node("/root/World/Elements").add_child(instruments[i])
 		var dropOffset = Vector2((randi()% 50 + -50) * 2, (randi()% 50 + -50) * 2)
 		var dropPosition = global_position + dropOffset
-		instruments[i].global_position = dropPosition
+		instruments[i].global_position = global_position
+		instruments[i].target_position = dropPosition
 		instrumentsAtHand[i] = false
 
 func pickup_instrument(id):
