@@ -28,7 +28,7 @@ func _on_new_fan_created():
 	if pct >= 0.25 and pct < 0.50:
 		if quarterFansReached == false:
 			#Spawn band member
-			spawn_new_band_member()
+			spawn_new_band_member(0)
 			quarterFansReached = true
 			#Check for any catchup spawns
 			catch_up_band_spawn(.25)
@@ -36,7 +36,7 @@ func _on_new_fan_created():
 	if pct >= 0.50 and pct < 0.75:
 		if halfFansReached == false:
 			#Spawn another band member
-			spawn_new_band_member()
+			spawn_new_band_member(1)
 			halfFansReached = true
 			#Check for any catchup spawns
 			catch_up_band_spawn(.50)
@@ -44,7 +44,7 @@ func _on_new_fan_created():
 	if pct >= 0.75 and pct < 1:
 		if threeQuartersFansReached == false:
 			#Spawn the third band member
-			spawn_new_band_member()
+			spawn_new_band_member(2)
 			threeQuartersFansReached = true
 			#Check for any catchup spawns
 			catch_up_band_spawn(.75)
@@ -57,22 +57,24 @@ func catch_up_band_spawn(currentStagePct):
 	elif currentStagePct == .50:
 		# check to make sure any previous spawns haven't been missed
 		if quarterFansReached == false:
-			spawn_new_band_member()
+			spawn_new_band_member(1)
 			quarterFansReached = true
 	elif currentStagePct == .75:
 		# check to make sure any previous spawns haven't been missed
 		if quarterFansReached == false:
-			spawn_new_band_member()
+			spawn_new_band_member(1)
 			quarterFansReached = true
 		if halfFansReached == false:
-			spawn_new_band_member()
+			spawn_new_band_member(2)
 			halfFansReached = true
 
 
-func spawn_new_band_member():
+func spawn_new_band_member(bandMemberNumber):
+	
 	print("Spawned new band member")
 	var new_band_member = band_member_prefab.instance()
 	new_band_member.player = player
 	humanTreeNode.add_child(new_band_member)
 	new_band_member.global_position = spawn_position
 	new_band_member.nav = nav
+	new_band_member.set_sprite(bandMemberNumber)

@@ -13,10 +13,17 @@ var state = WATCHING
 var velocity = Vector2.ZERO
 var target = null
 
+var bandMemberSprites = [
+	"res://Player/Player_1_Sheet.png",
+	"res://Player/Player_2_Sheet.png",
+	"res://Player/Player_3_Sheet.png"
+]
+
 onready var playerDetectionZone = $PlayerDetectionZone
 onready var softCollision = $SoftCollision
 onready var animationTree = $Animations/AnimationTree
 onready var animationPlayer = $Animations/AnimationPlayer
+onready var sprite = $Sprite
 onready var animationState = animationTree.get("parameters/playback")
 
 var speed = 50
@@ -101,3 +108,6 @@ func set_state_to_following():
 func _on_PlayerDetectionZone_body_entered(body: Node) -> void:
 	body.Active_Band_Members += 1
 	queue_free()
+	
+func set_sprite(newSprite):
+	sprite.texture = load(bandMemberSprites[newSprite])
