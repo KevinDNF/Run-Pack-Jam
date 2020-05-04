@@ -20,7 +20,7 @@ func _ready() -> void:
 
 ## Allows us to spawn police at set intervals
 func _on_PoliceSpawnTimer_timeout() -> void:
-	if world.currentNumberOfEnemies < world.maxNumberOfEnemies:
+	if world.currentNumberOfEnemies < Config.maxNumberOfEnemies:
 		var new_policeman = policeman_prefab.instance()
 		humanTreeNode.add_child(new_policeman)
 		new_policeman.global_position = spawn_position

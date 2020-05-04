@@ -8,8 +8,8 @@ export var Active_Band_Members = 1 setget updateActiveBandMembers
 onready var band_members = [
 	$"Band_Members/Member_1",
 	$"Band_Members/Member_2",
-	$"Band_Members/Member_3",
 	$"Band_Members/Member_4",
+	$"Band_Members/Member_3",
 ]
 
 onready var metalTracks = [
