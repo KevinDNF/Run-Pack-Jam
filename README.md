@@ -2,7 +2,7 @@
 
 Developed in 60h for the 2020 Quarantine Jam at Itch.io
 
-Submition : https://itch.io/jam/ndab-jam/rate/633034
+Submission : https://itch.io/jam/ndab-jam/rate/633034
 
 Can be played at : https://kevindnf.itch.io/run-pack-and-jam-quarantine
 
