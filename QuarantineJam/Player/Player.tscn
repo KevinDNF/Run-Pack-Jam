@@ -5,7 +5,7 @@
 [ext_resource path="res://Player/Player_5_Sheet.png" type="Texture" id=3]
 [ext_resource path="res://Music and Sounds/BG/Action Scenes-4.ogg" type="AudioStream" id=4]
 [ext_resource path="res://Player/Player_2_Sheet.png" type="Texture" id=5]
-[ext_resource path="res://Player/Player_4_Sheet.png" type="Texture" id=6]
+[ext_resource path="res://Player/Player_4_Sheet_v2.png" type="Texture" id=6]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 8.0
