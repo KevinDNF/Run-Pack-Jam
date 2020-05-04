@@ -1,34 +1,32 @@
-extends KinematicBody2D
+extends RigidBody2D
 
 onready var softCollision = $SoftCollision
 onready var softCollisionCollider = $SoftCollision/CollisionShape2D
 onready var collider = $Collider
-onready var timer = $Timer
-var velocity = Vector2.ZERO
-var target_position
 var id = 0
 
-export var ACCELERATION = 300
-export var MAX_SPEED = 50
-export var FRICTION = 200
+export var OFFSET = 500
+export var FORCE =  100
+export var BOUNCE = 20
 
 func _ready() -> void:
+	linear_damp = 1
+	var physics_material = PhysicsMaterial.new()
+	physics_material.bounce = BOUNCE
+	physics_material.rough = true
+	physics_material_override = physics_material
 	print(id)
 
-func _physics_process(delta: float) -> void:
-	
-	var direction = position.direction_to(target_position)
-	velocity = velocity.move_toward(direction * MAX_SPEED, ACCELERATION * delta)
-	
-	velocity = move_and_slide(velocity)
-#	if softCollision.is_colliding():
-#		velocity += softCollision.get_push_vector() * delta * 400
-#	else:
-#		velocity = Vector2.ZERO
-#	velocity = move_and_slide(velocity)
-	
 
 func _on_Timer_timeout() -> void:
 	softCollisionCollider.disabled = false
+	#set_collision_layer_bit(0, true) do this but with animation
 	collider.disabled = false
-	timer.stop()
+
+func throw(player_position):
+	
+	var direction_rotation = randi()%360+0
+	print("Rotation: " + str(direction_rotation))
+	global_position = player_position + Vector2(50,0).rotated(direction_rotation)
+	apply_impulse(Vector2(OFFSET, 0).rotated(direction_rotation),
+				  Vector2(FORCE, 0).rotated(direction_rotation))

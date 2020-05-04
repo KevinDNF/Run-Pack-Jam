@@ -270,25 +270,18 @@ func getCurrentTrack(genreNo, trackNo):
 	return load(g[y])
 	
 func drop_all_instruments():
-	var a = instruments
 	for i in range(0, Active_Band_Members):
 		var current_instrumern = instrumentScenes[i].instance()
 		instruments[i] = current_instrumern
 		current_instrumern.id = i
 		get_node("/root/World/Elements").add_child(instruments[i])
-		var dropOffset = Vector2((randi()% 50 + -50) * 2, (randi()% 50 + -50) * 2)
-		var dropPosition = global_position + dropOffset
-		instruments[i].global_position = global_position
-		instruments[i].target_position = dropPosition
+		instruments[i].throw(global_position)
 		instrumentsAtHand[i] = false
 
 func pickup_instrument(id):
 	var p = instruments[id].get_parent()
 	var el = instruments[id]
 	el.queue_free()
-	
-	
-	
 	instrumentsAtHand[id] = true
 	
 func holding_all_instruments():

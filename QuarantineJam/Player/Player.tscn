@@ -1302,7 +1302,7 @@ tracks/0/keys = {
 [sub_resource type="AnimationNodeStateMachinePlayback" id=107]
 
 [sub_resource type="CircleShape2D" id=108]
-radius = 27.6882
+radius = 20.172
 
 [node name="Player" type="KinematicBody2D"]
 position = Vector2( 0, 0.066412 )
@@ -1468,7 +1468,7 @@ autoplay = true
 
 [node name="IntrumentPickupRadius" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 128
+collision_mask = 256
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="IntrumentPickupRadius"]
 position = Vector2( 0, -9.90555 )
