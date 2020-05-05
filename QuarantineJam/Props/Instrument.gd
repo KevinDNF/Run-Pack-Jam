@@ -13,7 +13,7 @@ onready var softCollisionCollider = $SoftCollision/CollisionShape2D
 onready var collider = $Collider
 var id = 0
 
-export var OFFSET = 500
+export var OFFSET = 20
 export var FORCE =  100
 export var BOUNCE = 20
 
@@ -38,6 +38,6 @@ func throw(player_position):
 	
 	var direction_rotation = randi()%360+0
 	print("Rotation: " + str(direction_rotation))
-	global_position = player_position + Vector2(50,0).rotated(direction_rotation)
+	global_position = player_position
 	apply_impulse(Vector2(OFFSET, 0).rotated(direction_rotation),
 				  Vector2(FORCE, 0).rotated(direction_rotation))

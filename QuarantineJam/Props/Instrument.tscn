@@ -5,17 +5,29 @@
 [ext_resource path="res://Props/Instrument.gd" type="Script" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 15.0
+radius = 12.2526
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 15.2534
 
-[sub_resource type="CircleShape2D" id=3]
-radius = 11.0879
+[sub_resource type="Animation" id=4]
+resource_name = "Animate"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:collision_layer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 128, 384 ]
+}
 
 [node name="Instrument" type="RigidBody2D"]
-collision_layer = 384
-collision_mask = 132
+collision_layer = 128
+collision_mask = 388
 script = ExtResource( 3 )
 
 [node name="Collider" type="CollisionShape2D" parent="."]
@@ -31,10 +43,8 @@ collision_mask = 129
 [node name="CollisionShape2D" parent="SoftCollision" index="0"]
 shape = SubResource( 2 )
 
-[node name="Pickup Area" type="Area2D" parent="."]
-collision_layer = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Pickup Area"]
-shape = SubResource( 3 )
+[node name="EnablePickup" type="AnimationPlayer" parent="."]
+autoplay = "Animate"
+anims/Animate = SubResource( 4 )
 
 [editable path="SoftCollision"]

@@ -10,7 +10,7 @@ radius = 4.21896
 height = 8.06828
 
 [sub_resource type="CapsuleShape2D" id=2]
-radius = 8.95084
+radius = 6.40566
 height = 15.8521
 
 [sub_resource type="CapsuleShape2D" id=3]
