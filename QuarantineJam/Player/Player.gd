@@ -38,12 +38,9 @@ onready var indieTracks = [
 	"res://Music and Sounds/Indie/Indie (All Instruments).ogg"
 ]
 
-onready var instrumentScenes = [
-	preload("res://Props/SecondGuitar.tscn"),
-	preload("res://Props/BassGuitar.tscn"),
-	preload("res://Props/Drums.tscn"),
-	preload("res://Props/Guitar.tscn")
-]
+
+
+onready var instrumentScene = preload("res://Props/Instrument.tscn")
 
 onready var instruments = []
 
@@ -250,7 +247,7 @@ func updateActiveBandMembers(value):
 	
 	for i in range(instruments.size(), Active_Band_Members):
 		band_members[i].visible = true
-		var createdInstrument = instrumentScenes[i].instance()
+		var createdInstrument = instrumentScene.instance()
 		createdInstrument.id = i
 		instruments.append(createdInstrument)
 		
@@ -271,10 +268,11 @@ func getCurrentTrack(genreNo, trackNo):
 	
 func drop_all_instruments():
 	for i in range(0, Active_Band_Members):
-		var current_instrumern = instrumentScenes[i].instance()
+		var current_instrumern = instrumentScene.instance()
 		instruments[i] = current_instrumern
 		current_instrumern.id = i
 		get_node("/root/World/Elements").add_child(instruments[i])
+		instruments[i].set_instrument(i)
 		instruments[i].throw(global_position)
 		instrumentsAtHand[i] = false
 

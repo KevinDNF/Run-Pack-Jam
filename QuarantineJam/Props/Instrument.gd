@@ -1,5 +1,13 @@
 extends RigidBody2D
 
+onready var sprites = [
+	"res://Props/SecondGuitar.png",
+	"res://Props/BassGuitar.png",
+	"res://Props/Drums.png",
+	"res://Props/Guitar.png"
+]
+
+onready var sprite = $Sprite
 onready var softCollision = $SoftCollision
 onready var softCollisionCollider = $SoftCollision/CollisionShape2D
 onready var collider = $Collider
@@ -22,6 +30,9 @@ func _on_Timer_timeout() -> void:
 	softCollisionCollider.disabled = false
 	#set_collision_layer_bit(0, true) do this but with animation
 	collider.disabled = false
+
+func set_instrument(id):
+	sprite.texture = load(sprites[id])
 
 func throw(player_position):
 	
